@@ -1,0 +1,60 @@
+﻿@using Models
+@model UserDTO
+@{
+    ViewBag.Title = "EditUser";
+}
+<script>
+    $(function () {
+        $("#btn_submit").click(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/EditUser",
+                dataType: "text",
+                data: $(".input").serialize(),
+                success: function(data, textStatus, jqXhr) {
+
+                    if (data == "True") {
+                        alert(data);
+                        window.location.reload();
+                    } else {
+                        alert('编辑失败');
+                    }
+                },
+                error: function(jqXhr, textStatus, errorThrown) {
+                    alert('error');
+                }
+            });
+        });
+
+
+    })
+</script>
+<h2>编辑</h2>
+<table>
+    <tr>
+        <td>userid</td>
+        <td><input class="input" type="text" value="@Model.UserID" name="UserID"   /></td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td><input class="input" type="password" value="@Model.Password" name="Password" /></td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td><input class="input" type="text" value="@Model.Name" name="Name" /></td>
+    </tr>
+    <tr>
+        <td>age</td>
+        <td><input class="input" type="number" value="@Model.Age" name="Age" /></td>
+    </tr>
+    <tr>
+        <td>email</td>
+        <td><input class="input" type="email" value="@Model.Email" name="Email" /></td>
+    </tr>
+    <tr>
+        <td><input id="btn_submit" type="submit" /></td>
+    </tr>
+</table>
+
+

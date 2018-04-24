@@ -1,0 +1,59 @@
+﻿@using Models
+@model UserDTO
+@{
+    ViewBag.Title = "AddUser";
+}
+<script>
+    $(function () {
+        $("#btn_submit").click(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AddUser",
+                dataType: "text",
+                data: $(".input").serialize(),
+                success: function(data, textStatus, jqXhr) {
+                    
+                    if (data == "True") {
+                        alert(data);
+                        window.location.reload();
+                    } else {
+                        alert('新增失败');
+                    }
+                },
+                error: function(jqXhr, textStatus, errorThrown) {
+                    alert('error');
+                }
+            });
+        });
+        
+
+    })
+</script>
+<h2>新增</h2>
+<table id="form">
+    <tr>
+        <td>userid</td>
+        <td><input class="input" type="text"  name="UserID" /></td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td><input class="input" type="password"  name="Password" /></td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td><input class="input" type="text"  name="Name" /></td>
+    </tr>
+    <tr>
+        <td>age</td>
+        <td><input class="input" type="number"  name="Age" /></td>
+    </tr>
+    <tr>
+        <td>email</td>
+        <td><input class="input" type="email" name="Email" /></td>
+    </tr>
+    <tr>
+        <td><input class="input" id="btn_submit" type="button" value="提交" /></td>
+    </tr>
+</table>
+

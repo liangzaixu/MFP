@@ -1,0 +1,116 @@
+﻿@using Models
+@model  IEnumerable<UserDTO>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style type="text/css">
+        .modal_edit {
+            display: none;
+            position: fixed;
+            top: 200px;
+            left: 600px;
+            height:400px;
+            width:400px;
+            margin: 0px auto;
+            background-color:#ffffff;
+            border: 1px solid #808080;
+            box-shadow: 5px 5px 2px #a79b9b;
+            z-index:10px;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+    <script>
+        $(function () {
+
+            var pageIndex='@Ajax.JavaScriptStringEncode(ViewBag.PageIndex)';
+
+            $(".btn_delete").click(function() {
+                if (!confirm("请问删除")) {
+                    return;
+                }
+                var pUserID=$(this).attr("data-user-id");
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/User/DeleteUser",
+                    dataType: "text",
+                    data: { userID: pUserID },
+                    success:function(data,textStatus,jqXhr) {
+                        alert(data);
+                        window.location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                        
+                });
+            });
+
+            $(".btn_edit").click(function () {
+                var userID = $(this).attr("data-user-id");
+                userID = encodeURIComponent(userID);
+                $("#modal_edit").load("/User/EditUser?userID=" + userID);
+                $("#modal_edit").show();
+            });
+
+            $(".btn_add").click(function () {
+                $("#modal_edit").load("/User/AddUser");
+                $("#modal_edit").show();
+            });
+        });
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            
+        </th>
+    </tr>
+    
+    @foreach (UserDTO item in Model)
+    {
+        <tr>
+            <td>@item.UserID</td>
+            <td>@item.Name</td>
+            <td>@item.Age</td>
+            <td>@item.Email</td>
+            <td>
+                <input class="btn_delete" type="button" value="delete" data-user-id="@item.UserID"/>
+                <input class="btn_edit" type="button" value="edit" data-user-id="@item.UserID" />
+            </td>
+        </tr>
+    }
+</table>
+<div><input class="btn_add" type="button" value="添加" /></div>
+<div id="modal_edit" class="modal_edit">
+    @*@Html.Action("EditUser")*@
+</div>
+    <input id="hidden_pageIndex" type="hidden" value="@ViewBag.PageIndex" />
+</body>
+</html>
+
+
+
