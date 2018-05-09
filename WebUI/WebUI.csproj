@@ -133,7 +133,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\UserController.cs" />
+    <Compile Include="API\TestController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -141,6 +141,7 @@
     <Compile Include="Areas\UserMgr\UserMgrAreaRegistration.cs" />
     <Compile Include="Controllers\AsyncController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HttpRequestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,6 +188,9 @@
     <Content Include="Views\User\AddUser.cshtml" />
     <Content Include="Views\Async\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HttpClient\Index.cshtml" />
+    <Content Include="Views\HttpRequest\HttpClientDemo.cshtml" />
+    <Content Include="Views\HttpRequest\HttpWebRequestDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

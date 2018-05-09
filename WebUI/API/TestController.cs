@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace WebUI.API
 {
-    public class UserController : ApiController
+    public class TestController : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
@@ -21,9 +21,11 @@ namespace WebUI.API
             return "value";
         }
 
+        [HttpPost]
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public IEnumerable<string> Post([FromBody]string username,string words)
         {
+            return new string[] { "value1", "value2" };
         }
 
         // PUT api/<controller>/5
