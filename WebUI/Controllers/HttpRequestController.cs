@@ -16,13 +16,14 @@ namespace WebUI.Controllers
         public ActionResult HttpClientDemo()
         {
             HttpClient client = new HttpClient();
-            var url = "http://localhost:20017/api/Test";
+            var url = "http://xurongjian:20017/api/Test";
 
             var postData = new Dictionary<string, string>
             {
                 { "username", "test" },
                 { "words", "hello world" }
             };
+
             var urlEncodedContent = new FormUrlEncodedContent(postData);
             var result=client.PostAsync(url, urlEncodedContent).Result.Content.ReadAsStringAsync().Result;
  
@@ -33,11 +34,14 @@ namespace WebUI.Controllers
 
         public ActionResult HttpWebRequestDemo()
         {
-            HttpWebRequest request= WebRequest.Create("http://localhost:20017/api/Test") as HttpWebRequest;
+            HttpWebRequest request= WebRequest.Create("http://xurongjian:20017/api/Test?t=xml") as HttpWebRequest;
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded;charset=utf-8";
+
             string param = "username=test&words=hello world";
             byte[] param_bytes = Encoding.UTF8.GetBytes(param);
+            //request.ContentType = "application/json;charset=utf-8";
+            //byte[] param_bytes = Encoding.UTF8.GetBytes("{\"username\":\"test\",\"words\":\"hello world\"}");
             using (Stream requestStream = request.GetRequestStream())
             {
                 requestStream.Write(param_bytes,0,param_bytes.Length);

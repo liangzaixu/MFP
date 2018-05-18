@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -19,8 +20,16 @@ namespace WebUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
 
+            var format = GlobalConfiguration.Configuration.Formatters;
+            format.JsonFormatter.SerializerSettings.DateFormatString = "yyyy-MM-dd";
+            
+            //清除默认xml
+            format.XmlFormatter.SupportedMediaTypes.Clear();
+            
+            //通过参数设置返回格式
+            format.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("t", "json", "application/json"));
+            format.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("t", "xml", "application/xml"));
 
         }
     }
