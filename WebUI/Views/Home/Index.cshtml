@@ -14,6 +14,7 @@
 <div>
     
     <p>@Html.ActionLink("用户管理", "Index","User") \ <a href="@Url.Action("Index","User")" >用户管理</a></p>
+    <p>@Html.ActionLink("后台管理", "Index",new RouteValueDictionary(new { action = "Index",controller="Home",area="Admin" }) ) </p>
 </div>
 <div></div>
 </body>

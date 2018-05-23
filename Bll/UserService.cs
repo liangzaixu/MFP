@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using Dal;
+using Dal.Entities;
 using System.Web;
 
 namespace Bll
@@ -70,7 +71,7 @@ namespace Bll
 
         public UserDTO GetUserDetail(string userID)
         {
-            Dal.User userDbModel = _userRepositroy.GetDetail(userID);
+            User userDbModel = _userRepositroy.GetDetail(userID);
             UserDTO userViewModel = new UserDTO()
             {
                 UserID = userDbModel.UserID,

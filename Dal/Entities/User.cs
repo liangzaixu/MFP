@@ -1,4 +1,4 @@
-namespace Dal
+namespace Dal.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -9,17 +9,23 @@ namespace Dal
     [Table("User")]
     public partial class User
     {
+        [Key]
+        [Column(TypeName = "varchar")]
         [StringLength(30)]
         public string UserID { get; set; }
 
-        [StringLength(50)]
+        [Column(TypeName = "varchar")]
+        [Required,StringLength(50)]
         public string Name { get; set; }
 
-        public int? Age { get; set; }
+        [Required]
+        public int Age { get; set; }
 
+        [Column(TypeName = "varchar")]
         [StringLength(50)]
         public string Email { get; set; }
 
+        [Column(TypeName = "varchar")]
         [StringLength(50)]
         public string Pwd { get; set; }
 

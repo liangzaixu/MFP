@@ -36,8 +36,8 @@
                         贤心
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">基本资料</a></dd>
-                        <dd><a href="">安全设置</a></dd>
+                        <dd><a href="@Url.Action("Index","Personal")">基本资料</a></dd>
+                        <dd><a href="@Url.Action("Security","Personal")">安全设置</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="">退了</a></li>
@@ -70,8 +70,22 @@
         </div>
 
         <div class="layui-body">
-            <!-- 内容主体区域 -->
-            <div style="padding: 15px;">内容主体区域</div>
+            <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
+                <ul class="layui-tab-title">
+                    <li class="" lay-id="11">网站设置<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="22" class="">用户管理<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="33">权限分配<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="44">商品管理<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="55" class="layui-this">订单管理<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item">内容1</div>
+                    <div class="layui-tab-item">内容2</div>
+                    <div class="layui-tab-item">内容3</div>
+                    <div class="layui-tab-item">内容4</div>
+                    <div class="layui-tab-item layui-show">内容5</div>
+                </div>
+            </div>
         </div>
 
         <div class="layui-footer">

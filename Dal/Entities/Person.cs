@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Dal
+namespace Dal.Entities
 {
     /// <summary>
     /// 一对一的外键关系

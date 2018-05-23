@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Dal
+namespace Dal.Entities
 {
     public class DbContextFactory
     {

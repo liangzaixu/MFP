@@ -1,6 +1,6 @@
 
 
-namespace Dal
+namespace Dal.Entities
 {
     using System;
     using System.Data.Entity;
@@ -30,31 +30,14 @@ namespace Dal
 
         public virtual DbSet<IDCard> IDCards { get; set; }
 
+        public virtual DbSet<HeaderMenu> HeaderMenus { get; set; }
+
+        public virtual DbSet<SideMenu> SideMenus { get; set; }
+
+        public virtual DbSet<DetailAction> DetailAction { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Log>()
-                .Property(e => e.UserID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Log>()
-                .Property(e => e.IP)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.UserID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Pwd)
-                .IsUnicode(false);
 
             // 禁用多对多关系表的级联删除
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();

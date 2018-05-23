@@ -52,14 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="Entities\DetailAction.cs" />
     <Compile Include="Entities\City.cs" />
     <Compile Include="Entities\DbContextFactory.cs" />
+    <Compile Include="Entities\HeaderMenu.cs" />
     <Compile Include="Entities\IDCard.cs" />
     <Compile Include="Entities\Lodging.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Province.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\SideMenu.cs" />
     <Compile Include="LogRepository.cs" />
     <Compile Include="Entities\MvcDemoEntities.cs" />
     <Compile Include="Entities\User.cs" />

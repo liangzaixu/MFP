@@ -1,4 +1,4 @@
-namespace Dal
+namespace Dal.Entities
 {
     using System;
     using System.Collections.Generic;
