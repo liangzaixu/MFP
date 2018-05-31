@@ -14,7 +14,7 @@ namespace Dal.Entities
         public int ID { get; set; }
 
         [Column("UserID",TypeName="varchar")]
-        [StringLength(30)]
+        [StringLength(50)]
         public string UserID { get; set; }
 
         [StringLength(30)]

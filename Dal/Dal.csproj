@@ -31,12 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -58,21 +58,20 @@
     <Compile Include="Entities\DbContextFactory.cs" />
     <Compile Include="Entities\HeaderMenu.cs" />
     <Compile Include="Entities\IDCard.cs" />
+    <Compile Include="Entities\IUnitOfWork.cs" />
     <Compile Include="Entities\Lodging.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Province.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\SideMenu.cs" />
-    <Compile Include="LogRepository.cs" />
-    <Compile Include="Entities\MvcDemoEntities.cs" />
+    <Compile Include="Entities\DbContextBase.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

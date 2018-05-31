@@ -1,16 +1,17 @@
+using System.Data;
+using System;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using Dal.Entities;
 
-
-namespace Dal.Entities
+namespace Dal
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-    using System.Data.Entity.ModelConfiguration.Conventions;
 
-    public partial class MvcDemoEntities : DbContext
+    public  partial class DbContextBase : DbContext
     {
-        public MvcDemoEntities(): base("name=MvcDemoEntities")
+        public DbContextBase(): base("name=MvcDemoEntities")
         {
             //Database.SetInitializer<MvcDemoEntities>(new DropCreateDatabaseAlways<MvcDemoEntities>());
             //Database.SetInitializer<MvcDemoEntities>(new CreateDatabaseIfNotExists<MvcDemoEntities>());
@@ -42,11 +43,38 @@ namespace Dal.Entities
             // 禁用多对多关系表的级联删除
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
+
+
+
+        public void BeginTransaction(IsolationLevel iolationLevel= IsolationLevel.Unspecified)
+        {
+            if (Database.CurrentTransaction == null)
+            {
+                DbContextTransaction dbTrans=Database.BeginTransaction(iolationLevel);
+            }
+        }
+
+        public void Commit()
+        {
+            DbContextTransaction transaction = Database.CurrentTransaction;
+            if (transaction != null)
+            {
+                try
+                {
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 
-    public class SeedingDataInitializer : DropCreateDatabaseAlways<MvcDemoEntities>
+    public class SeedingDataInitializer : CreateDatabaseIfNotExists<DbContextBase>
     {
-        protected override void Seed(MvcDemoEntities context)
+        protected override void Seed(DbContextBase context)
         {
             context.Users.Add(new User()
             {

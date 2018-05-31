@@ -11,7 +11,7 @@ namespace Dal
 {
     public class UserRepository
     {
-        private MvcDemoEntities _entities = new MvcDemoEntities();
+        private DbContextBase _entities = new DbContextBase();
 
         public List<User> GetAllUser()
         {
@@ -76,7 +76,7 @@ namespace Dal
 
             Person person1= _entities.Persons.FirstOrDefault();
 
-            using (var context = new MvcDemoEntities())
+            using (var context = new DbContextBase())
             {
                 Person person2= context.Persons.FirstOrDefault();
                 person2.Name = "靓仔C";
@@ -97,8 +97,8 @@ namespace Dal
 
         public void JustForTest2()
         {
-            var context1 = new MvcDemoEntities();
-            var context2 = new MvcDemoEntities();
+            var context1 = new DbContextBase();
+            var context2 = new DbContextBase();
 
             using (var trans = context2.Database.BeginTransaction())
             {
