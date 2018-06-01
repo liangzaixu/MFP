@@ -47,26 +47,18 @@ namespace Dal.Entities
                 try
                 {
                     transaction.Commit();
-
-                    bool isNULL=DbContextFactory.GetDbContext().Database.CurrentTransaction==null;
                 }
                 catch (Exception)
                 {
                     transaction.Rollback();
                     throw;
                 }
+                finally
+                {
+                    transaction.Dispose();
+                }
             }
         }
-
-        public static void RollBack()
-        {
-            DbContextTransaction transaction = DbContextFactory.GetDbContext().Database.CurrentTransaction;
-            if (transaction != null)
-            {
-                transaction.Rollback();
-            }
-        }
-           
 
         public static int GetConnectionState()
         {
@@ -79,15 +71,6 @@ namespace Dal.Entities
         {
             DbContextBase dbContext = DbContextFactory.GetDbContext();
             dbContext.Database.Connection.Close();
-        }
-
-        public static void DisposeTransaction()
-        {
-            DbContextTransaction transaction = DbContextFactory.GetDbContext().Database.CurrentTransaction;
-            if (transaction != null)
-            {
-                transaction.Dispose();
-            }
         }
     }
 }
