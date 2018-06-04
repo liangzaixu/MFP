@@ -11,7 +11,14 @@ namespace WebUI.Areas.Admin.Controllers
         // GET: Admin/Index
         public ActionResult Index()
         {
+
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult GetMenu()
+        {
+            return Json();
         }
     }
 }

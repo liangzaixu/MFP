@@ -63,29 +63,38 @@ namespace Dal
             return num > 0;
         }
 
-        public bool Update(T entity,params string[] proNames)
+        public bool Delete(Func<T,bool> predicate)
         {
-            DbEntityEntry entry = DbContext.Entry<T>(entity);
-            //4.2先设置 对象的包装为Unchanged
-            entry.State = EntityState.Unchanged;
-            //4.3循环 被修改的属性名 数组
-            if()
+            dbSet.Where(predicate).ToArray();
 
-            foreach (string proName in proNames)
+        }
+
+        public bool Update(T entity, string[] proNames=null)
+        {
+            int num = 0;
+            DbEntityEntry entry = DbContext.Entry<T>(entity);
+            if (proNames != null)
             {
-                //4.4将每个 被修改的属性的状态 设置为已修改状态;后面生成update语句时，就只为已修改的属性 更新
-                entry.Property(proName).IsModified = true;
+                entry.State = EntityState.Unchanged;
+                foreach (string proName in proNames)
+                {
+                    entry.Property(proName).IsModified = true;
+                }
             }
-            return true;
+            else
+            {
+                if (entry.State == EntityState.Detached)
+                {
+                    dbSet.Attach(entity);
+                    entry.State = EntityState.Modified;
+                }
+            }
+            return num>0;
         }
 
         public bool IsExists(string key)
         {
             return GetByKey(key) != (T) null;
         }
-
-
-
-
     }
 }

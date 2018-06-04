@@ -9,24 +9,14 @@ namespace WebUI.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {
-        private UsersService userService = new UsersService();
+        private DemoService userService = new DemoService();
         // GET: Admin/User
         public ActionResult Index()
         {
-            userService.DoSomething();
+            //userService.DoSomething();
+
             return View();
         }
 
-        public ActionResult Index1()
-        {
-            userService.DoSomething1();
-            return View();
-        }
-
-        public ActionResult Index2()
-        {
-            userService.DoSomething2();
-            return View();
-        }
     }
 }

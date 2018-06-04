@@ -42,6 +42,7 @@ namespace Dal
 
             // 禁用多对多关系表的级联删除
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            //modelBuilder.Configurations.
         }
 
 
@@ -84,6 +85,8 @@ namespace Dal
                  Email="admin@qq.com",
                  Pwd="123456"
             });
+
+            //context.Database.ExecuteSqlCommand("");
 
             base.Seed(context);
         }
