@@ -19,7 +19,7 @@ namespace Bll
 
         public List<MenuDTO> GetMenuByUserID()
         {
-            
+            return null;
         }
 
     }

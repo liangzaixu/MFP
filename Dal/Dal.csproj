@@ -67,6 +67,8 @@
     <Compile Include="Entities\SideMenu.cs" />
     <Compile Include="Entities\DbContextBase.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\V_HeaderMenu.cs" />
+    <Compile Include="Entities\V_SideMenu.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

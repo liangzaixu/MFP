@@ -65,6 +65,7 @@ namespace Dal
 
         public bool Delete(Func<T,bool> predicate)
         {
+            return true;
             dbSet.Where(predicate).ToArray();
 
         }

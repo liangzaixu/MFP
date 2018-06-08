@@ -15,10 +15,10 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
-        public JsonResult GetMenu()
-        {
-            return Json();
-        }
+        //[HttpPost]
+        //public JsonResult GetMenu()
+        //{
+        //    return Json();
+        //}
     }
 }
