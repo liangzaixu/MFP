@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using MFP.Service.BGSystem;
 
-namespace WebUI.Controllers
+namespace MFP.WebUI.Controllers
 {
     public class AsyncController : Controller
     {

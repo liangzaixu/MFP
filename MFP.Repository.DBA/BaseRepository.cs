@@ -10,7 +10,7 @@ namespace MFP.Repository.DBA
 {
     public class BaseRepository<T> where T : class, new()
     {
-        public DbContextBase DbContext { get; private set; }
+        public IUnitOfWork DbContext { get; private set; }
 
         private readonly DbSet<T> dbSet;
 
@@ -22,7 +22,7 @@ namespace MFP.Repository.DBA
         public BaseRepository()
         {
             DbContext = DbContextFactory.GetDbContext();
-            dbSet = DbContext.Set<T>();
+            dbSet = ((DbContext)DbContext).Set<T>();
         }
 
         public T GetByKey(string key)
@@ -72,7 +72,7 @@ namespace MFP.Repository.DBA
         public bool Update(T entity, string[] proNames=null)
         {
             int num = 0;
-            DbEntityEntry entry = DbContext.Entry<T>(entity);
+            DbEntityEntry entry = ((DbContextBase)DbContext).Entry<T>(entity);
             if (proNames != null)
             {
                 entry.State = EntityState.Unchanged;

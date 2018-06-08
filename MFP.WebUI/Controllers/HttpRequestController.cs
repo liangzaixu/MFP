@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.IO;
 using System.Text;
 
-namespace WebUI.Controllers
+namespace MFP.WebUI.Controllers
 {
     public class HttpRequestController : Controller
     {

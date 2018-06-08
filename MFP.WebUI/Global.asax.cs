@@ -9,7 +9,7 @@ using System.Web.Routing;
 using System.Web.Http;
 
 
-namespace WebUI
+namespace MFP.WebUI
 {
     public class MvcApplication : System.Web.HttpApplication
     {

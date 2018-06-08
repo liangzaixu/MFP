@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MFP.Service.BGSystem;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace MFP.WebUI.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {

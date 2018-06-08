@@ -7,8 +7,8 @@
     <ProjectGuid>{8145996E-9C4D-4A8C-8207-D3B4E7FF6D6B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Models</RootNamespace>
-    <AssemblyName>Models</AssemblyName>
+    <RootNamespace>MFP.Model.BGSystem</RootNamespace>
+    <AssemblyName>MFP.Model.BGSystem</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

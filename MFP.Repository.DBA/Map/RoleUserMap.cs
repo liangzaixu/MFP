@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration;
 using MFP.Repository.DBA.Entity;
 
+
 namespace MFP.Repository.DBA.Map
 {
-    public class V_DetailActionMap:EntityTypeConfiguration<V_DetailAction>
+    public class RoleUserMap:EntityTypeConfiguration<RoleUser>
     {
-        public V_DetailActionMap()
+        public RoleUserMap()
         {
-            HasKey(m => new { m.ActionID, m.SideMenuID, m.UserID });
-
+            HasKey(m => new { m.RoleID, m.UserID });
         }
     }
 }

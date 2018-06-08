@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace WebUI
+namespace MFP.WebUI
 {
     public class FilterConfig
     {

@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace WebUI.API
+namespace MFP.WebUI.API
 {
     public class TestController : ApiController
     {

@@ -8,5 +8,6 @@ namespace MFP.Model.BGSystem
 {
     public class MenuDTO
     {
+
     }
 }

@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace WebUI
+namespace MFP.WebUI
 {
     public class RouteConfig
     {
@@ -18,7 +18,7 @@ namespace WebUI
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "WebUI.Controllers" }
+                namespaces: new string[] { "MFP.WebUI.Controllers" }
             );
         }
     }

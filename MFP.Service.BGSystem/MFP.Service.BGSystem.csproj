@@ -7,8 +7,8 @@
     <ProjectGuid>{BEF03E76-89D3-4428-8FDD-EE55C45E9640}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bll</RootNamespace>
-    <AssemblyName>Bll</AssemblyName>
+    <RootNamespace>MFP.Service.BGSystem</RootNamespace>
+    <AssemblyName>MFP.Service.BGSystem</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

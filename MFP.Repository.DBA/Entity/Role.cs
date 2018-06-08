@@ -20,13 +20,15 @@ namespace MFP.Repository.DBA.Entity
         [Required,StringLength(30)]
         public string RoleName { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        //public virtual ICollection<User> Users { get; set; }
 
         //public virtual ICollection<HeaderMenu> HeaderMenus { get; set; }
 
         //public virtual ICollection<SideMenu> SideMenus { get; set; }
 
         //public virtual ICollection<DetailAction> DetailActions { get; set; }
+
+        public virtual ICollection<RoleUser> Users { get; set; }
 
         public virtual ICollection<RoleDetailAction> RoleDetailAction { get; set; }
 

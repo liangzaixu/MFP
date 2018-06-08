@@ -29,6 +29,6 @@ namespace MFP.Repository.DBA.Entity
         [StringLength(50)]
         public string Pwd { get; set; }
 
-        public virtual ICollection<Role> Roles { get; set; }
+        //public virtual ICollection<Role> Roles { get; set; }
     }
 }

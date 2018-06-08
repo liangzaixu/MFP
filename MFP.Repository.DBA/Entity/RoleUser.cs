@@ -8,19 +8,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MFP.Repository.DBA.Entity
 {
-    public class V_DetailAction
+    [Table("RoleUser")]
+    public class RoleUser
     {
         public string UserID { get; set; }
-
         public int RoleID { get; set; }
 
-        public string ActionID { get; set; }
+        public virtual User User { get; set; }
 
-        public string ActionName { get; set; }
-
-        public string Title { get; set; }
-
-        public string SideMenuID { get; set; }
-
+        public virtual Role Role { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace WebUI.Areas.Admin
+namespace MFP.WebUI.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration 
     {
@@ -18,7 +18,7 @@ namespace WebUI.Areas.Admin
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new string[] { "WebUI.Areas.Admin.Controllers" }
+                new string[] { "MFP.WebUI.Areas.Admin.Controllers" }
 
             );
         }

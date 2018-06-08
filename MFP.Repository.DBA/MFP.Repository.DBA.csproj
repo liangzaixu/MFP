@@ -7,8 +7,8 @@
     <ProjectGuid>{72FF5ECC-A90F-4CD4-A9EF-A6B7A4A90625}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dal</RootNamespace>
-    <AssemblyName>Dal</AssemblyName>
+    <RootNamespace>MFP.Repository.DBA</RootNamespace>
+    <AssemblyName>MFP.Repository.DBA</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -58,6 +58,7 @@
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="Entity\HeaderMenu.cs" />
     <Compile Include="Entity\IDCard.cs" />
+    <Compile Include="Entity\RoleUser.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Entity\Lodging.cs" />
     <Compile Include="Entity\Log.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="DbContextBase.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\V_DetailAction.cs" />
+    <Compile Include="Map\RoleUserMap.cs" />
     <Compile Include="Map\V_DetailActionMap.cs" />
     <Compile Include="Entity\V_HeaderMenu.cs" />
     <Compile Include="Entity\V_SideMenu.cs" />

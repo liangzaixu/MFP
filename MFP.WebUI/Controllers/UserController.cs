@@ -9,7 +9,7 @@ using MFP.Model.BGSystem;
 using MFP.Service.BGSystem;
 
 
-namespace WebUI.Controllers
+namespace MFP.WebUI.Controllers
 {
     public class UserController : Controller
     {
