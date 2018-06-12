@@ -8,6 +8,8 @@ namespace MFP.Model.BGSystem
 {
     public class MenuDTO
     {
+        public IList<HeaderMenuDTO> HeaderMenus { get; set; }
 
+        public IList<SideMenuDTO> SideMenus { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace MFP.Repository.DBA.Entity
         public string MenuID { get; set; }
         public string MenuName { get; set; }
         public string Url { get; set; }
+        public string IconUrl { get; set; }
         public string MenuOrder { get; set; }
     }
 }

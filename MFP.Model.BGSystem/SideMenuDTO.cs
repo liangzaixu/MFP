@@ -4,20 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MFP.Repository.DBA.Entity
+namespace MFP.Model.BGSystem
 {
-    public class V_SideMenu
+    public class SideMenuDTO
     {
-        public string UserID { get; set; }
-        public int RoleID { get; set; }
-        public string MenuID { get; set; }
-        public string MenuName { get; set; }
-        public string Url { get; set; }
-        public string IconUrl { get; set; }
-        public int MenuOrder { get; set; }
-        public string HeaderMenuID { get; set; }
-        public string ParentID { get; set; }
-        public int HasChildren { get; set; }
+        private string _url;
 
+        public string MenuID { get; set; }
+
+        public string MenuName { get; set; }
+
+        public string Url
+        {
+            get { return string.IsNullOrEmpty(_url) ? "javascript:void(0);" : _url; }
+            set { _url = value; }
+        }
+
+        public string IconUrl { get; set; }
+
+        public string HeaderMenuID { get; set; }
+
+        public string ParentID { get; set; }
+
+        public int MenuOrder { get; set; }
+
+        public IList<SideMenuDTO> Children { get; set; }
     }
 }

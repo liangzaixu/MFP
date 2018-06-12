@@ -65,10 +65,6 @@ namespace MFP.Repository.DBA
             base.OnModelCreating(modelBuilder);
             //modelBuilder.Configurations.
         }
-
-
-
-        
     }
 
     public partial class DbContextBase : DbContext, IUnitOfWork
@@ -192,7 +188,7 @@ namespace MFP.Repository.DBA
         #endregion
     }
 
-    public class SeedingDataInitializer : DropCreateDatabaseAlways<DbContextBase>
+    public class SeedingDataInitializer : CreateDatabaseIfNotExists<DbContextBase>
     {
         protected override void Seed(DbContextBase context)
         {
@@ -213,14 +209,15 @@ namespace MFP.Repository.DBA
 
             string createV_HeaderMenu= @"CREATE VIEW [dbo].[V_HeaderMenu]
                                     AS
-                                    SELECT     RU.UserID , RHM.RoleID AS RoleID, HM.MenuID, HM.MenuName, HM.Url, HM.MenuOrder
+                                    SELECT     RU.UserID , RHM.RoleID AS RoleID, HM.MenuID, HM.MenuName, HM.Url,HM.IconUrl, HM.MenuOrder
                                     FROM         dbo.RoleHeaderMenu AS RHM INNER JOIN
                                                           dbo.HeaderMenu AS HM ON RHM.MenuID = HM.MenuID INNER JOIN
                                                           dbo.RoleUser AS RU ON RHM.RoleID = RU.RoleID;";
             string createV_SideMenu = @"
                                     CREATE VIEW [dbo].[V_SideMenu]
                                     AS
-                                    SELECT     RU.UserID , RSM.RoleID AS RoleID, SM.MenuID, SM.MenuName, SM.Url, SM.HeaderMenuID, SM.ParentID, SM.MenuOrder
+                                    SELECT     RU.UserID , RSM.RoleID AS RoleID, SM.MenuID, SM.MenuName, SM.Url,SM.IconUrl, SM.HeaderMenuID, SM.ParentID, SM.MenuOrder,
+                                               (CASE WHEN EXISTS ( select TOP 1 1 from SideMenu AS CSM where CSM.ParentID=SM.MenuID)  THEN 1 ELSE 0 END) AS HasChildren
                                     FROM         dbo.RoleSideMenu AS RSM INNER JOIN
                                                           dbo.SideMenu AS SM ON RSM.MenuID = SM.MenuID INNER JOIN
                                                           dbo.RoleUser AS RU ON RU.RoleID = RSM.RoleID";

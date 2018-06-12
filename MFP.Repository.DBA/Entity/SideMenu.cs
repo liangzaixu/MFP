@@ -24,6 +24,10 @@ namespace MFP.Repository.DBA.Entity
         [Required, StringLength(200)]
         public string Url { get; set; }
 
+        [Column(TypeName = "varchar")]
+        [StringLength(200)]
+        public string IconUrl { get; set; }
+
         public string HeaderMenuID { get; set; }
 
         [Column(TypeName = "varchar")]

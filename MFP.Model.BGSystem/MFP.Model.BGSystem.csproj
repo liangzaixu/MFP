@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeaderMenuDTO.cs" />
     <Compile Include="LogDTO.cs" />
     <Compile Include="MenuDTO.cs" />
+    <Compile Include="SideMenuDTO.cs" />
     <Compile Include="UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

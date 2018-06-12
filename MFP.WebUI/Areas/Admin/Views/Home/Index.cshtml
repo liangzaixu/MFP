@@ -1,6 +1,8 @@
-﻿
+﻿@using MFP.Model.BGSystem
+@model MFP.Model.BGSystem.MenuDTO
 @{
     Layout = null;
+    
 }
 
 <!DOCTYPE html>
@@ -20,8 +22,10 @@
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
             <div class="layui-logo">通用后台管理系统</div>
+
             <!-- 头部区域（可配合layui已有的水平导航） -->
-            <ul class="layui-nav layui-layout-left" lay-filter="header-nav">
+
+            <!--<ul class="layui-nav layui-layout-left" lay-filter="header-nav">
                 <li class="layui-nav-item"><a href="">控制台</a></li>
                 <li class="layui-nav-item"><a href="">商品管理</a></li>
                 <li class="layui-nav-item"><a href="">用户</a></li>
@@ -33,6 +37,13 @@
                         <dd><a href="">授权管理</a></dd>
                     </dl>
                 </li>
+            </ul>-->
+            
+            <ul class="layui-nav layui-layout-left" lay-filter="header-nav">
+                @foreach (HeaderMenuDTO item in Model.HeaderMenus)
+                {
+                    <li class="layui-nav-item" data-menu-id="@item.MenuID"><a href="@item.Url">@item.MenuName</a></li>
+                }
             </ul>
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
@@ -52,7 +63,7 @@
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="left-nav">
+                <!--<ul class="layui-nav layui-nav-tree" lay-filter="left-nav">
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;" data-menu-id="power">权限管理</a>
                         <dl class="layui-nav-child">
@@ -63,13 +74,30 @@
                         </dl>
                     </li>
                     <li class="layui-nav-item layui-nav-itemed">
-                        <a href="javascript:;">系统管理</a>
+                        <a href="javascript:;" data-menu-id="system">系统管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-menu-id="setting">网站设置</a></dd>
                             <dd><a href="javascript:;" data-menu-id="log">系统日志</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item"><a href="">测试</a></li>
+                </ul>-->
+                <ul class="layui-nav layui-nav-tree" lay-filter="left-nav">
+                    @foreach (SideMenuDTO item in Model.SideMenus)
+                    {
+                        <li class="layui-nav-item layui-nav-itemed">
+                            <a class="" href="@item.Url" data-menu-id="power">@item.MenuName</a>
+                            @if (item.Children != null)
+                            {
+                                <dl class="layui-nav-child">
+                                @foreach (var childrenItem in item.Children)
+                                {
+                                    <dd><a href="javascript:;" data-menu-id="@childrenItem.MenuID" data-menu-name="@childrenItem.MenuName" data-url="@childrenItem.Url">@childrenItem.MenuName</a></dd>
+                                }
+                                </dl>
+                            }
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -149,11 +177,6 @@
 
                 //console.info($(elem).text());
             });
-
-            
-
-            
-
         });
     </script>
 </body>

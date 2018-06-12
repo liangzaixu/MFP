@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BEF03E76-89D3-4428-8FDD-EE55C45E9640}</ProjectGuid>
+    <ProjectGuid>{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MFP.Service.BGSystem</RootNamespace>
-    <AssemblyName>MFP.Service.BGSystem</AssemblyName>
+    <RootNamespace>MFP.Maper</RootNamespace>
+    <AssemblyName>MFP.Maper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,23 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DemoService.cs" />
-    <Compile Include="MenuService.cs" />
-    <Compile Include="UserService.cs" />
+    <Compile Include="Extension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MFP.Maper\MFP.Maper.csproj">
-      <Project>{9758def4-f462-43bc-8e0e-2403e0ac05d6}</Project>
-      <Name>MFP.Maper</Name>
+    <ProjectReference Include="..\MFP.Model.BGSystem\MFP.Model.BGSystem.csproj">
+      <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>
+      <Name>MFP.Model.BGSystem</Name>
     </ProjectReference>
     <ProjectReference Include="..\MFP.Repository.DBA\MFP.Repository.DBA.csproj">
       <Project>{72ff5ecc-a90f-4cd4-a9ef-a6b7a4a90625}</Project>
       <Name>MFP.Repository.DBA</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MFP.Model.BGSystem\MFP.Model.BGSystem.csproj">
-      <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>
-      <Name>MFP.Model.BGSystem</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

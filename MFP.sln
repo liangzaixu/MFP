@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{0CF0BB87-3890-4A93-98EC-CB7FCC9DBD3F}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Repository.DBA", "MFP.Repository.DBA\MFP.Repository.DBA.csproj", "{72FF5ECC-A90F-4CD4-A9EF-A6B7A4A90625}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Service.BGSystem", "MFP.Service.BGSystem\MFP.Service.BGSystem.csproj", "{BEF03E76-89D3-4428-8FDD-EE55C45E9640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Maper", "MFP.Maper\MFP.Maper.csproj", "{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,14 @@ Global
 		{BEF03E76-89D3-4428-8FDD-EE55C45E9640}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BEF03E76-89D3-4428-8FDD-EE55C45E9640}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
 		{BEF03E76-89D3-4428-8FDD-EE55C45E9640}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.DebugNet40|Any CPU.Build.0 = Debug|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +86,6 @@ Global
 		{8145996E-9C4D-4A8C-8207-D3B4E7FF6D6B} = {7A503B1F-5613-4DCA-858F-B560A30D74DB}
 		{72FF5ECC-A90F-4CD4-A9EF-A6B7A4A90625} = {0CF0BB87-3890-4A93-98EC-CB7FCC9DBD3F}
 		{BEF03E76-89D3-4428-8FDD-EE55C45E9640} = {405BC70A-603A-4713-98DC-FB74FD7C4192}
+		{9758DEF4-F462-43BC-8E0E-2403E0AC05D6} = {7A503B1F-5613-4DCA-858F-B560A30D74DB}
 	EndGlobalSection
 EndGlobal
