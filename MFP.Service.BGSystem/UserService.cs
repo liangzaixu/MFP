@@ -7,49 +7,33 @@ using System.Web;
 using MFP.Model.BGSystem;
 using MFP.Repository.DBA;
 using MFP.Repository.DBA.Entity;
+using MFP.Maper;
 
 namespace MFP.Service.BGSystem
 {
     public class UserService
     {
-        private UserRepository _userRepositroy = new UserRepository();
-        public List<UserDTO> GetAllUser()
+        private BaseRepository<User> _userRepositroy;
+
+        public UserService()
         {
-            var users=_userRepositroy.GetAllUser();
-            var usersViewModel = new List<UserDTO>();
-            foreach (var item in users)
-            {
-                usersViewModel.Add(new UserDTO()
-                {
-                    UserID = item.UserID,
-                    Name = item.Name,
-                    Age = Convert.ToInt32(item.Age) ,
-                    Email = item.Email
-                });
-            }
-            return usersViewModel;
+            _userRepositroy = new BaseRepository<User>();
         }
 
         public List<UserDTO> GetUserToPage(int pageSize=10,int pageIndex=0, string keyWord="")
         {
-            List<User> listDBModel= _userRepositroy.GetUserToPage(pageSize, pageIndex, keyWord);
-            List<UserDTO> listViewModel = new List<UserDTO>();
-            foreach (User item in listDBModel)
+            IQueryable<User> userQuery = _userRepositroy.Entities.OrderBy(p => p.UserID);
+            if (keyWord != "")
             {
-                listViewModel.Add(new UserDTO
-                {
-                     UserID= item.UserID,
-                     Name=item.Name,
-                     Age=Convert.ToInt32(item.Age),
-                     Email=item.Email
-                });
+                userQuery = userQuery.Where(p => p.UserID.Contains(keyWord) || p.Name.Contains(keyWord));
             }
-            return listViewModel;
+            List<User> userEntities=userQuery.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            return userEntities.ToDto();
         }
 
         public bool AddUser(UserDTO user)
         {
-            return _userRepositroy.InsertUser(new User()
+            return _userRepositroy.Insert(new User()
             {
                 UserID = user.UserID,
                 Name = user.Name,
@@ -61,31 +45,20 @@ namespace MFP.Service.BGSystem
 
         public bool EditUser(UserDTO user)
         {
-            return _userRepositroy.UpdateUser(user, null);
+            return _userRepositroy.Update(user.ToEntity(), null);
         }
 
         public bool DeleteUser(string userID)
         {
-            return _userRepositroy.DeleteUser(userID);
+            return _userRepositroy.Delete(userID);
         }
 
         public UserDTO GetUserDetail(string userID)
         {
-            User userDbModel = _userRepositroy.GetDetail(userID);
-            UserDTO userViewModel = new UserDTO()
-            {
-                UserID = userDbModel.UserID,
-                Name = userDbModel.Name,
-                Age = Convert.ToInt32(userDbModel.Age),
-                Email = userDbModel.Email
-            };
-            return userViewModel;
+            User userDbModel = _userRepositroy.Entities.FirstOrDefault(m=>m.UserID==userID);
+            return userDbModel.ToDto();
         }
 
-        public void JustForTest()
-        {
-            _userRepositroy.JustForTest();
-        }
 
         public bool AtAsyncHttpContextCurrentIsNull()
         {

@@ -14,6 +14,6 @@ namespace MFP.Repository.DBA.Entity
         public string MenuName { get; set; }
         public string Url { get; set; }
         public string IconUrl { get; set; }
-        public string MenuOrder { get; set; }
+        public int MenuOrder { get; set; }
     }
 }

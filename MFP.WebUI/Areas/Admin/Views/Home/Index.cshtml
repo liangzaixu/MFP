@@ -1,5 +1,5 @@
 ﻿@using MFP.Model.BGSystem
-@model MFP.Model.BGSystem.MenuDTO
+@model IEnumerable<MFP.Model.BGSystem.HeaderMenuDTO>
 @{
     Layout = null;
     
@@ -40,9 +40,17 @@
             </ul>-->
             
             <ul class="layui-nav layui-layout-left" lay-filter="header-nav">
-                @foreach (HeaderMenuDTO item in Model.HeaderMenus)
+                @{
+                    bool flagH = true;
+                }
+                @foreach (HeaderMenuDTO item in Model)
                 {
-                    <li class="layui-nav-item" data-menu-id="@item.MenuID"><a href="@item.Url">@item.MenuName</a></li>
+                    if (item.MenuID == "root")
+                    {
+                        continue;
+                    }
+                    <li class="layui-nav-item @(flagH?"layui-this":string.Empty)" data-menu-id="@item.MenuID" ><a href="@item.Url" data-menu-id="@item.MenuID" >@item.MenuName</a></li>
+                    flagH = false;
                 }
             </ul>
             <ul class="layui-nav layui-layout-right">
@@ -82,23 +90,29 @@
                     </li>
                     <li class="layui-nav-item"><a href="">测试</a></li>
                 </ul>-->
-                <ul class="layui-nav layui-nav-tree" lay-filter="left-nav">
-                    @foreach (SideMenuDTO item in Model.SideMenus)
+                
+                    @{ bool flag = true;}
+                    @foreach (HeaderMenuDTO headerItem in Model)
                     {
-                        <li class="layui-nav-item layui-nav-itemed">
-                            <a class="" href="@item.Url" data-menu-id="power">@item.MenuName</a>
-                            @if (item.Children != null)
+                        <ul id="left-nav-@headerItem.MenuID" class="layui-nav layui-nav-tree" lay-filter="left-nav"  data-menu-id="@headerItem.MenuID" style="@(flag? string.Empty : "display:none")">
+                            @foreach (SideMenuDTO sideItem in headerItem.SideMenus)
                             {
-                                <dl class="layui-nav-child">
-                                @foreach (var childrenItem in item.Children)
+                            <li class="layui-nav-item layui-nav-itemed">
+                                <a class="" href="@sideItem.Url" data-menu-id="@sideItem.MenuID">@sideItem.MenuName</a>
+                                @if (sideItem.Children != null)
                                 {
-                                    <dd><a href="javascript:;" data-menu-id="@childrenItem.MenuID" data-menu-name="@childrenItem.MenuName" data-url="@childrenItem.Url">@childrenItem.MenuName</a></dd>
+                                    <dl class="layui-nav-child">
+                                        @foreach (var childrenItem in sideItem.Children)
+                                        {
+                                            <dd><a href="javascript:;" data-menu-id="@childrenItem.MenuID" data-menu-name="@childrenItem.MenuName" data-url="@childrenItem.Url">@childrenItem.MenuName</a></dd>
+                                        }
+                                    </dl>
                                 }
-                                </dl>
+                            </li>
                             }
-                        </li>
+                        </ul>
+                        flag = false;
                     }
-                </ul>
             </div>
         </div>
 
@@ -147,7 +161,6 @@
                     element.tabChange('body-tab', layID); //切换到：用户管理
                 },
                 tabReload: function (layID) {
-                    
                 }
                 
             };
@@ -156,12 +169,14 @@
                 active.tabDelete($(this).parent().attr("lay-id"));
             });
 
+
             element.on('nav(left-nav)', function (elem) {
                 var $elem = $(elem);
                 var menuID = $(elem).attr("data-menu-id");
                 var menuName = $elem.attr("data-menu-name");
                 var url = $elem.attr("data-url");
                 var tabLayID = "tab" + menuID;
+
                 var $targetTitle = $(".layui-tab-title li[lay-id=" + tabLayID + "]");
                 if ($targetTitle.length > 0) {
                     
@@ -175,7 +190,19 @@
                     active.tabChange(tabLayID);
                 }
 
+                $("ul[lay-filter='left-nav'] .layui-this:hidden").removeClass("layui-this");
+
                 //console.info($(elem).text());
+            });
+
+            element.on('nav(header-nav)',function(elem) {
+                var $elem = $(elem);
+                var menuID = $(elem).attr("data-menu-id");
+                var menuName = $elem.attr("data-menu-name");
+
+
+                $("#left-nav-" + menuID).siblings().hide();
+                $("#left-nav-" + menuID).fadeIn(300);
             });
         });
     </script>

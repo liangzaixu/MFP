@@ -13,8 +13,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Index()
         {
-            //userService.DoSomething();
-            userService.TestAsNoTracking();
+           
             return View();
         }
 

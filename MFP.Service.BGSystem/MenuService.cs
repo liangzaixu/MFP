@@ -21,10 +21,12 @@ namespace MFP.Service.BGSystem
             sideMenuRep = new BaseRepository<V_SideMenu>();
         }
 
-        public MenuDTO GetMenus(string userID)
+        public List<HeaderMenuDTO> GetMenus(string userID)
         {
             List<V_HeaderMenu> headerMenus = _headerMenuRep.Entities.Where(u => u.UserID == userID).OrderBy(u => u.MenuOrder).ToList();
             List<V_SideMenu> sideMenus = sideMenuRep.Entities.Where(u => u.UserID == userID).OrderBy(u => u.MenuOrder).ToList();
+
+            List<HeaderMenuDTO> headerMenuDtos = headerMenus.ToDto();
 
             List<SideMenuDTO> sideMenuDtos = new List<SideMenuDTO>();
             List<V_SideMenu> sideMenuRoot = sideMenus.Where(m => m.ParentID == "root").ToList();
@@ -33,14 +35,30 @@ namespace MFP.Service.BGSystem
             {
                 SideMenuDTO temp= item.ToDto();
                 temp.Children = GetChildren(sideMenus, temp.MenuID, item.HasChildren==1);
-                sideMenuDtos.Add(temp);
+
+
+                //右侧菜单的HeaderMenuID等于root时，说明头部不存在菜单。那么就在程序层add一个root的头部菜单节点。
+                //不显示顶部root节点，仅显示顶部root节点下的右侧菜单
+                if (temp.HeaderMenuID == "root")
+                {
+                    if (headerMenuDtos.Count == 0)
+                    {
+                        headerMenuDtos.Add(new HeaderMenuDTO()
+                        {
+                            MenuID = "root"
+                        });
+                    }
+
+                    headerMenuDtos[0].SideMenus.Add(temp);
+                }
+                else
+                {
+                    headerMenuDtos.FirstOrDefault(m => m.MenuID == temp.HeaderMenuID).SideMenus.Add(temp);
+                }
             }
 
-            return new MenuDTO
-            {
-                HeaderMenus= headerMenus.ToDto(),
-                SideMenus= sideMenuDtos
-            };
+            return headerMenuDtos;
+
         }
 
         private IList<SideMenuDTO> GetChildren(List<V_SideMenu> source, string parentID, bool hasChildren)

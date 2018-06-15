@@ -41,8 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extension.cs" />
+    <Compile Include="MenuMaper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserMaper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MFP.Model.BGSystem\MFP.Model.BGSystem.csproj">

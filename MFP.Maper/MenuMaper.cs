@@ -9,7 +9,7 @@ using MFP.Repository.DBA.Entity;
 
 namespace MFP.Maper
 {
-    public static class Extension
+    public static class MenuMaper
     {
 
         #region HeaderMenu

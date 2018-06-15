@@ -10,6 +10,11 @@ namespace MFP.Model.BGSystem
     {
         private string _url;
 
+        public HeaderMenuDTO()
+        {
+            SideMenus = new List<SideMenuDTO>();
+        }
+
         public string MenuID { get; set; }
 
         public string MenuName { get; set; }
@@ -24,5 +29,6 @@ namespace MFP.Model.BGSystem
 
         public int MenuOrder { get; set; }
 
+        public List<SideMenuDTO> SideMenus { get; set; }
     }
 }

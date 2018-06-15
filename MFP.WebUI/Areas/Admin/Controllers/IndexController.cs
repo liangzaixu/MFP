@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MFP.Service.BGSystem;
 using MFP.Model.BGSystem;
+using System.Collections;
 
 namespace MFP.WebUI.Areas.Admin.Controllers
 {
@@ -20,7 +21,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         // GET: Admin/Index
         public ActionResult Index()
         {
-            MenuDTO menu = _menuService.GetMenus("admin");
+            List<HeaderMenuDTO> menu = _menuService.GetMenus("admin");
             return View(menu);
         }
 
