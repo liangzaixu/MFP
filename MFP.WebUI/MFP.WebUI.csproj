@@ -154,6 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\user.css" />
     <Content Include="Content\layui\css\layui.css" />
     <Content Include="Content\layui\css\layui.mobile.css" />
     <Content Include="Content\layui\css\modules\code.css" />
@@ -262,9 +263,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\UserMgr\Views\web.config" />
-    <Content Include="Content\layui\font\iconfont.eot" />
-    <Content Include="Content\layui\font\iconfont.ttf" />
-    <Content Include="Content\layui\font\iconfont.woff" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Personal\Security.cshtml" />
@@ -274,6 +272,9 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index1.cshtml" />
+    <Content Include="Content\layui\font\iconfont.eot" />
+    <Content Include="Content\layui\font\iconfont.ttf" />
+    <Content Include="Content\layui\font\iconfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -324,6 +325,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MFP.CommonModel\MFP.CommonModel.csproj">
+      <Project>{f3d330d1-696b-495a-a308-ce5bca1e022e}</Project>
+      <Name>MFP.CommonModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MFP.Model.BGSystem\MFP.Model.BGSystem.csproj">
       <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>
       <Name>MFP.Model.BGSystem</Name>

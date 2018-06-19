@@ -8,6 +8,7 @@ using MFP.Model.BGSystem;
 using MFP.Repository.DBA;
 using MFP.Repository.DBA.Entity;
 using MFP.Maper;
+using MFP.CommonModel;
 
 namespace MFP.Service.BGSystem
 {
@@ -20,15 +21,26 @@ namespace MFP.Service.BGSystem
             _userRepositroy = new BaseRepository<User>();
         }
 
-        public List<UserDTO> GetUserToPage(int pageSize=10,int pageIndex=0, string keyWord="")
+        public PageResult<List<UserDTO>> GetUserToPage(int pageIndex=0, int pageSize = 10, string keyWord="")
         {
             IQueryable<User> userQuery = _userRepositroy.Entities.OrderBy(p => p.UserID);
             if (keyWord != "")
             {
                 userQuery = userQuery.Where(p => p.UserID.Contains(keyWord) || p.Name.Contains(keyWord));
             }
-            List<User> userEntities=userQuery.Skip(pageIndex * pageSize).Take(pageSize).ToList();
-            return userEntities.ToDto();
+
+            int total = userQuery.Count();
+
+            List<User> userEntities=userQuery.Skip((pageIndex-1) * pageSize).Take(pageSize).ToList();
+
+            return new PageResult<List<UserDTO>>()
+            {
+                code=0,
+                msg="",
+                count= total,
+                data= userEntities.ToDto()
+            };
+            //userEntities.ToDto();
         }
 
         public bool AddUser(UserDTO user)

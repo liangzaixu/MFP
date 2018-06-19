@@ -17,10 +17,10 @@ namespace MFP.WebUI.Controllers
 
         public ActionResult Index(int pageIndex=0)
         {
-            List<UserDTO> users = _userService.GetUserToPage(10, pageIndex);
-            ViewBag.PageIndex = pageIndex.ToString();
+            //List<UserDTO> users = _userService.GetUserToPage(10, pageIndex);
+            //ViewBag.PageIndex = pageIndex.ToString();
 
-            return View(users);
+            return View();
         }
 
         [HttpPost]

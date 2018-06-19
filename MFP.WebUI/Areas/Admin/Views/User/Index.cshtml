@@ -8,11 +8,54 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <script src="~/Content/layui/layui.js"></script>
+    <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Content/Admin/user.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <title>用户管理</title>
 </head>
 <body>
-<div>
+<div class="layui-elem-quote">
     用户管理
 </div>
+<table id="userList"></table>
+<script type="text/javascript">
+    layui.use('table', function () {
+        var table = layui.table;
+        var dataD;
+
+        //$.ajax({
+        //    url: '/admin/user/getuser',
+        //    type: 'get',
+        //    data: {
+        //        page:1,
+        //        limit:10
+        //    },
+        //    success:function(data) {
+        //        dataD = data;
+        //    }
+
+        //});
+
+        table.render({
+            elem: '#userList'
+            , url: '/admin/user/getuser'
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                { field: 'UserID', title: 'ID', sort: true }
+                , { field: 'Name', title: '用户名' } //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                , { field: 'Age', title: '年龄' }
+                , { field: 'Email', title: '邮箱' }
+            ]]
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                , groups: 5 //只显示 1 个连续页码
+                , first: true //不显示首页
+                , last: true //不显示尾页
+
+            }
+        });
+    });
+</script>
 </body>
 </html>
