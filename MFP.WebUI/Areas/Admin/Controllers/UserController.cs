@@ -18,9 +18,9 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetUser(int page,int limit,string keyWord="")
+        public JsonResult GetUser(int pageIndex,int pageSize,string keyWord="")
         {
-            return Json(_userService.GetUserToPage(page, limit, keyWord),JsonRequestBehavior.AllowGet);
+            return Json(_userService.GetUserToPage(pageIndex, pageSize, keyWord),JsonRequestBehavior.AllowGet);
         }
 
     }

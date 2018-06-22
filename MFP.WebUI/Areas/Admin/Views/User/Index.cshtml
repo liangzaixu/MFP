@@ -15,9 +15,23 @@
     <title>用户管理</title>
 </head>
 <body>
-<div class="layui-elem-quote">
-    用户管理
+
+<div class="layui-fluid layui-bg-gray" style="height: 38px;padding: 10px 15px;">
+    <label class="layui-form-label" style="padding-left:0;width:50px;">用户名:</label>
+    <div class="layui-input-inline">
+        <input type="text" name="title" placeholder="请输入用户名搜索" autocomplete="off" class="layui-input">
+    </div>
+    <button class="layui-btn " style="margin-left:10px">
+        <i class="layui-icon layui-icon-search"></i> 搜索
+    </button>
+    <button class="layui-btn layui-btn-primary">
+        <i class="layui-icon layui-icon-fonts-clear"></i> 重置
+    </button>
+    <button class="layui-btn " style="float: right;" >
+        <i class="layui-icon  layui-icon-add-circle"></i> 添加
+    </button>
 </div>
+
 <table id="userList"></table>
 <script type="text/javascript">
     layui.use('table', function () {
@@ -40,12 +54,25 @@
         table.render({
             elem: '#userList'
             , url: '/admin/user/getuser'
+            ,request: {
+                pageName: 'pageIndex' //页码的参数名称，默认：page
+                ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            }
+            ,response: {
+                statusName: 'Status' //数据状态的字段名称，默认：code
+                ,statusCode: 200 //成功的状态码，默认：0
+                ,msgName: 'Msg' //状态信息的字段名称，默认：msg
+                ,countName: 'Total' //数据总数的字段名称，默认：count
+                ,dataName: 'Data' //数据列表的字段名称，默认：data
+            }
+            , height: 'full-112'
             , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             , cols: [[
                 { field: 'UserID', title: 'ID', sort: true }
                 , { field: 'Name', title: '用户名' } //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
                 , { field: 'Age', title: '年龄' }
                 , { field: 'Email', title: '邮箱' }
+                , { fixed: 'right', title: '操作', align: 'center', toolbar: '#girdToolbar' }
             ]]
             , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                 layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
@@ -56,6 +83,11 @@
             }
         });
     });
+</script>
+<script type="text/html" id="girdToolbar">
+    <button class="layui-btn  layui-btn-sm" data-user-id="{{d.UserID }}">查看</button>
+    <button class="layui-btn layui-btn-normal layui-btn-sm" data-user-id="{{d.UserID }}">编辑</button>
+    <button class="layui-btn layui-btn-danger layui-btn-sm" data-user-id="{{d.UserID }}">删除</button>
 </script>
 </body>
 </html>

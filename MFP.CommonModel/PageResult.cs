@@ -8,23 +8,23 @@ namespace MFP.CommonModel
 {
     public class PageResult<T>
     {
-        public int code { get; set; }
+        public int Status { get; set; }
 
-        public string msg { get; set; }
+        public string Msg { get; set; }
 
-        public int count { get; set; }
+        public int Total { get; set; }
 
-        public T data{ get; set;}
+        public T Data{ get; set;}
     }
 
     public class PageResult
     {
-        public int code { get; set; }
+        public int Status { get; set; }
 
-        public string msg { get; set; }
+        public string Msg { get; set; }
 
-        public int count { get; set; }
+        public int Total { get; set; }
 
-        public object data { get; set; }
+        public object Data { get; set; }
     }
 }

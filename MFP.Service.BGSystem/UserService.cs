@@ -35,12 +35,11 @@ namespace MFP.Service.BGSystem
 
             return new PageResult<List<UserDTO>>()
             {
-                code=0,
-                msg="",
-                count= total,
-                data= userEntities.ToDto()
+                Status=200,
+                Msg="",
+                Total = total,
+                Data= userEntities.ToDto()
             };
-            //userEntities.ToDto();
         }
 
         public bool AddUser(UserDTO user)
