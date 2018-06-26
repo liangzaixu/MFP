@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MFP.Service.BGSystem;
 using MFP.CommonModel;
+using MFP.Model.BGSystem;
 
 namespace MFP.WebUI.Areas.Admin.Controllers
 {
@@ -21,6 +22,28 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         public JsonResult GetUser(int pageIndex,int pageSize,string keyWord="")
         {
             return Json(_userService.GetUserToPage(pageIndex, pageSize, keyWord),JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult Delete()
+        {
+            return Json(null);
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult Edit(UserDTO user)
+        {
+            return Json(null);
         }
 
     }

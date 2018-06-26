@@ -169,7 +169,6 @@
                 active.tabDelete($(this).parent().attr("lay-id"));
             });
 
-
             element.on('nav(left-nav)', function (elem) {
                 var $elem = $(elem);
                 var menuID = $(elem).attr("data-menu-id");
@@ -204,7 +203,11 @@
                 $("#left-nav-" + menuID).siblings().hide();
                 $("#left-nav-" + menuID).fadeIn(300);
             });
+
+            
         });
+
+        
     </script>
 </body>
 </html>

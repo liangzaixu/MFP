@@ -16,18 +16,18 @@
 </head>
 <body>
 
-<div class="layui-fluid layui-bg-gray" style="height: 38px;padding: 10px 15px;">
+<div id="toolbar" class="layui-fluid layui-bg-gray" style="height: 38px;padding: 10px 15px;">
     <label class="layui-form-label" style="padding-left:0;width:50px;">用户名:</label>
     <div class="layui-input-inline">
-        <input type="text" name="title" placeholder="请输入用户名搜索" autocomplete="off" class="layui-input">
+        <input id="input-keyword" type="text" name="title" placeholder="请输入用户名搜索" autocomplete="off" class="layui-input">
     </div>
-    <button class="layui-btn " style="margin-left:10px">
+    <button id="btn-search" class="layui-btn" style="margin-left:10px" data-type="reload">
         <i class="layui-icon layui-icon-search"></i> 搜索
     </button>
-    <button class="layui-btn layui-btn-primary">
+    <button id="btn-clear" class="layui-btn layui-btn-primary" data-type="reset">
         <i class="layui-icon layui-icon-fonts-clear"></i> 重置
     </button>
-    <button class="layui-btn " style="float: right;" >
+    <button id="btn-add" class="layui-btn" style="float: right;" data-type="add">
         <i class="layui-icon  layui-icon-add-circle"></i> 添加
     </button>
 </div>
@@ -36,20 +36,6 @@
 <script type="text/javascript">
     layui.use('table', function () {
         var table = layui.table;
-        var dataD;
-
-        //$.ajax({
-        //    url: '/admin/user/getuser',
-        //    type: 'get',
-        //    data: {
-        //        page:1,
-        //        limit:10
-        //    },
-        //    success:function(data) {
-        //        dataD = data;
-        //    }
-
-        //});
 
         table.render({
             elem: '#userList'
@@ -81,8 +67,57 @@
                 , last: true //不显示尾页
 
             }
+            , id: 'userList'
+        });
+
+        var $ = layui.$;
+        var active = {
+            reload: function () {
+                var keyword = $("#input-keyword").val();
+                table.reload('userList', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    , where: {
+                        keyWord: keyword
+                    }
+                });
+            },
+            reset: function () {
+                $("#input-keyword").val('');
+                table.reload('userList', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    ,where: {
+                        keyWord: ''
+                    }
+                   
+                });
+            },
+            add:function() {
+                common.openModal();
+            },
+            edit:function() {
+                
+            },
+            del:function() {
+                
+            }
+        }
+
+        $("#toolbar .layui-btn").click(function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
         });
     });
+
+    var common = {
+        openModal: function () {
+            alert('222');
+        }
+    }
+
 </script>
 <script type="text/html" id="girdToolbar">
     <button class="layui-btn  layui-btn-sm" data-user-id="{{d.UserID }}">查看</button>
