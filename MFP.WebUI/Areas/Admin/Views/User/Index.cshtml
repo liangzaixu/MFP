@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width" />
     <script src="~/Content/layui/layui.js"></script>
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
-    <link href="~/Content/Admin/user.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <link href="~/Content/Admin/css/user.css" rel="stylesheet" />
+    
     <title>用户管理</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
     <div class="layui-input-inline">
         <input id="input-keyword" type="text" name="title" placeholder="请输入用户名搜索" autocomplete="off" class="layui-input">
     </div>
-    <button id="btn-search" class="layui-btn" style="margin-left:10px" data-type="reload">
+    <button id="btn-search" class="layui-btn" style="margin-left:10px" data-type="search">
         <i class="layui-icon layui-icon-search"></i> 搜索
     </button>
     <button id="btn-clear" class="layui-btn layui-btn-primary" data-type="reset">
@@ -32,97 +32,20 @@
     </button>
 </div>
 
-<table id="userList"></table>
-<script type="text/javascript">
-    layui.use('table', function () {
-        var table = layui.table;
+<table id="userList" lay-filter="userlist"></table>
 
-        table.render({
-            elem: '#userList'
-            , url: '/admin/user/getuser'
-            ,request: {
-                pageName: 'pageIndex' //页码的参数名称，默认：page
-                ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
-            }
-            ,response: {
-                statusName: 'Status' //数据状态的字段名称，默认：code
-                ,statusCode: 200 //成功的状态码，默认：0
-                ,msgName: 'Msg' //状态信息的字段名称，默认：msg
-                ,countName: 'Total' //数据总数的字段名称，默认：count
-                ,dataName: 'Data' //数据列表的字段名称，默认：data
-            }
-            , height: 'full-112'
-            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            , cols: [[
-                { field: 'UserID', title: 'ID', sort: true }
-                , { field: 'Name', title: '用户名' } //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                , { field: 'Age', title: '年龄' }
-                , { field: 'Email', title: '邮箱' }
-                , { fixed: 'right', title: '操作', align: 'center', toolbar: '#girdToolbar' }
-            ]]
-            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-                , groups: 5 //只显示 1 个连续页码
-                , first: true //不显示首页
-                , last: true //不显示尾页
-
-            }
-            , id: 'userList'
-        });
-
-        var $ = layui.$;
-        var active = {
-            reload: function () {
-                var keyword = $("#input-keyword").val();
-                table.reload('userList', {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    }
-                    , where: {
-                        keyWord: keyword
-                    }
-                });
-            },
-            reset: function () {
-                $("#input-keyword").val('');
-                table.reload('userList', {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    }
-                    ,where: {
-                        keyWord: ''
-                    }
-                   
-                });
-            },
-            add:function() {
-                common.openModal();
-            },
-            edit:function() {
-                
-            },
-            del:function() {
-                
-            }
-        }
-
-        $("#toolbar .layui-btn").click(function () {
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
-        });
-    });
-
-    var common = {
-        openModal: function () {
-            alert('222');
-        }
-    }
-
-</script>
 <script type="text/html" id="girdToolbar">
-    <button class="layui-btn  layui-btn-sm" data-user-id="{{d.UserID }}">查看</button>
-    <button class="layui-btn layui-btn-normal layui-btn-sm" data-user-id="{{d.UserID }}">编辑</button>
-    <button class="layui-btn layui-btn-danger layui-btn-sm" data-user-id="{{d.UserID }}">删除</button>
+    <button class="layui-btn  layui-btn-sm" data-user-id="{{d.UserID }}" lay-event="detail">查看</button>
+    <button class="layui-btn layui-btn-normal layui-btn-sm" data-user-id="{{d.UserID }}" lay-event="edit">编辑</button>
+    <button class="layui-btn layui-btn-danger layui-btn-sm" data-user-id="{{d.UserID }}" lay-event="delete">删除</button>
 </script>
+<script>
+    var url_addUser = '@Url.Action("Add","User",new RouteValueDictionary(new { Area = "Admin"}))';
+    var url_editUser = '@Url.Action("Edit","User",new RouteValueDictionary(new { Area = "Admin"}))';
+    var url_delUser = '@Url.Action("Delete","User",new RouteValueDictionary(new { Area = "Admin"}))';
+</script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/common.js"></script>
+<script src="~/Scripts/Admin/User/index.js"></script>
 </body>
 </html>

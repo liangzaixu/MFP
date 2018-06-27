@@ -154,7 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Admin\user.css" />
+    <Content Include="Content\Admin\css\user.css" />
     <Content Include="Content\layui\css\layui.css" />
     <Content Include="Content\layui\css\layui.mobile.css" />
     <Content Include="Content\layui\css\modules\code.css" />
@@ -260,6 +260,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Admin\User\index.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\UserMgr\Views\web.config" />
@@ -278,6 +279,7 @@
     <Content Include="Areas\Admin\Views\User\Add.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -318,6 +320,7 @@
     <Folder Include="Areas\UserMgr\Controllers\" />
     <Folder Include="Areas\UserMgr\Models\" />
     <Folder Include="Areas\UserMgr\Views\Shared\" />
+    <Folder Include="Content\Admin\img\" />
     <Folder Include="fonts\" />
     <Folder Include="Models\" />
   </ItemGroup>

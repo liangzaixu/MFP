@@ -13,154 +13,206 @@
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
     <title>Index</title>
     <style>
-        .layui-tab-item {
-            height: 100%;
+        .layui-body {
+            bottom:0;
+            overflow-y: hidden;
+        }
+         .layui-tab-item {
+             height: 100%;
+         }
+        .layui-side-scroll .layui-nav {
+            position: absolute;
+            top:0;
+        }
+        .layui-body .layui-tab {
+            margin: 0;
+            border-width: 0;
+        }
+        .layui-body .layui-tab-content {
+            position: absolute;
+            width: 100%;
+            top: 41px;
+            bottom: 0px;
+            padding: 0px;
+        }
+        .layui-layer-loading .layui-layer-content {
+            margin: auto;
         }
     </style>
 </head>
 <body class="layui-layout-body">
-    <div class="layui-layout layui-layout-admin">
-        <div class="layui-header">
-            <div class="layui-logo">通用后台管理系统</div>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">通用后台管理系统</div>
 
-            <!-- 头部区域（可配合layui已有的水平导航） -->
+        <!-- 头部区域（可配合layui已有的水平导航） -->
 
-            <!--<ul class="layui-nav layui-layout-left" lay-filter="header-nav">
-                <li class="layui-nav-item"><a href="">控制台</a></li>
-                <li class="layui-nav-item"><a href="">商品管理</a></li>
-                <li class="layui-nav-item"><a href="">用户</a></li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">其它系统</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="">邮件管理</a></dd>
-                        <dd><a href="">消息管理</a></dd>
-                        <dd><a href="">授权管理</a></dd>
-                    </dl>
-                </li>
-            </ul>-->
+        <!--<ul class="layui-nav layui-layout-left" lay-filter="header-nav">
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="">商品管理</a></li>
+            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>-->
             
-            <ul class="layui-nav layui-layout-left" lay-filter="header-nav">
-                @{
-                    bool flagH = true;
-                }
-                @foreach (HeaderMenuDTO item in Model)
+        <ul class="layui-nav layui-layout-left" lay-filter="header-nav">
+            @{
+                bool flagH = true;
+            }
+            @foreach (HeaderMenuDTO item in Model)
+            {
+                if (item.MenuID == "root")
                 {
-                    if (item.MenuID == "root")
-                    {
-                        continue;
-                    }
-                    <li class="layui-nav-item @(flagH?"layui-this":string.Empty)" data-menu-id="@item.MenuID" ><a href="@item.Url" data-menu-id="@item.MenuID" >@item.MenuName</a></li>
-                    flagH = false;
+                    continue;
                 }
-            </ul>
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                        贤心
-                    </a>
+                <li class="layui-nav-item @(flagH?"layui-this":string.Empty)" data-menu-id="@item.MenuID" ><a href="@item.Url" data-menu-id="@item.MenuID" >@item.MenuName</a></li>
+                flagH = false;
+            }
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="@Url.Action("Index","Personal")">基本资料</a></dd>
+                    <dd><a href="@Url.Action("Security","Personal")">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退了</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <!--<ul class="layui-nav layui-nav-tree" lay-filter="left-nav">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;" data-menu-id="power">权限管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="@Url.Action("Index","Personal")">基本资料</a></dd>
-                        <dd><a href="@Url.Action("Security","Personal")">安全设置</a></dd>
+                        <dd><a href="javascript:;" data-menu-id="menu" data-menu-name="菜单管理" data-url="/admin/menu">菜单管理</a></dd>
+                        <dd><a href="javascript:;" data-menu-id="role" data-menu-name="角色管理" data-url="/admin/role">角色管理</a></dd>
+                        <dd><a href="javascript:;" data-menu-id="user" data-menu-name="用户管理" data-url="/admin/user">用户管理</a></dd>
+                        <dd><a href="javascript:;" data-menu-id="action" data-menu-name="操作管理" data-url="/admin/menu">操作管理</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">退了</a></li>
-            </ul>
-        </div>
-
-        <div class="layui-side layui-bg-black">
-            <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <!--<ul class="layui-nav layui-nav-tree" lay-filter="left-nav">
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;" data-menu-id="power">权限管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-menu-id="menu" data-menu-name="菜单管理" data-url="/admin/menu">菜单管理</a></dd>
-                            <dd><a href="javascript:;" data-menu-id="role" data-menu-name="角色管理" data-url="/admin/role">角色管理</a></dd>
-                            <dd><a href="javascript:;" data-menu-id="user" data-menu-name="用户管理" data-url="/admin/user">用户管理</a></dd>
-                            <dd><a href="javascript:;" data-menu-id="action" data-menu-name="操作管理" data-url="/admin/menu">操作管理</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a href="javascript:;" data-menu-id="system">系统管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-menu-id="setting">网站设置</a></dd>
-                            <dd><a href="javascript:;" data-menu-id="log">系统日志</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item"><a href="">测试</a></li>
-                </ul>-->
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;" data-menu-id="system">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-menu-id="setting">网站设置</a></dd>
+                        <dd><a href="javascript:;" data-menu-id="log">系统日志</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">测试</a></li>
+            </ul>-->
                 
-                    @{ bool flag = true;}
-                    @foreach (HeaderMenuDTO headerItem in Model)
+            @{ bool flag = true;}
+            @foreach (HeaderMenuDTO headerItem in Model)
+            {
+                <ul id="left-nav-@headerItem.MenuID" class="layui-nav layui-nav-tree" lay-filter="left-nav"  data-menu-id="@headerItem.MenuID" style="@(flag? string.Empty : "display:none")">
+                    @foreach (SideMenuDTO sideItem in headerItem.SideMenus)
                     {
-                        <ul id="left-nav-@headerItem.MenuID" class="layui-nav layui-nav-tree" lay-filter="left-nav"  data-menu-id="@headerItem.MenuID" style="@(flag? string.Empty : "display:none")">
-                            @foreach (SideMenuDTO sideItem in headerItem.SideMenus)
+                        <li class="layui-nav-item layui-nav-itemed">
+                            <a class="" href="@sideItem.Url" data-menu-id="@sideItem.MenuID">@sideItem.MenuName</a>
+                            @if (sideItem.Children != null)
                             {
-                            <li class="layui-nav-item layui-nav-itemed">
-                                <a class="" href="@sideItem.Url" data-menu-id="@sideItem.MenuID">@sideItem.MenuName</a>
-                                @if (sideItem.Children != null)
-                                {
-                                    <dl class="layui-nav-child">
-                                        @foreach (var childrenItem in sideItem.Children)
-                                        {
-                                            <dd><a href="javascript:;" data-menu-id="@childrenItem.MenuID" data-menu-name="@childrenItem.MenuName" data-url="@childrenItem.Url">@childrenItem.MenuName</a></dd>
-                                        }
-                                    </dl>
-                                }
-                            </li>
+                                <dl class="layui-nav-child">
+                                    @foreach (var childrenItem in sideItem.Children)
+                                    {
+                                        <dd><a href="javascript:;" data-menu-id="@childrenItem.MenuID" data-menu-name="@childrenItem.MenuName" data-url="@childrenItem.Url">@childrenItem.MenuName</a></dd>
+                                    }
+                                </dl>
                             }
-                        </ul>
-                        flag = false;
+                        </li>
                     }
-            </div>
-        </div>
-
-        <div class="layui-body" style="bottom:0;">
-            <div class="layui-tab layui-tab-card" lay-filter="body-tab" style="margin:0px;border-width: 0px;"  lay-allowclose="true">
-                <ul class="layui-tab-title">
-                    <li class="layui-this" lay-id="11">网站设置<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
                 </ul>
-                <div class="layui-tab-content" style="position: absolute;width: 100%;top: 41px;bottom: 3px;padding: 0px;">
-                    <div class="layui-tab-item layui-show">
-                        <iframe src="http://www.layui.com/admin/std/dist/views/home/console.html" style="width: 100%;height: 100%;border: none;"></iframe>
-                    </div>
+                flag = false;
+            }
+        </div>
+    </div>
+
+    <div class="layui-body" style="bottom:0;">
+        <div class="layui-tab layui-tab-card" lay-filter="body-tab"  lay-allowclose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this" lay-id="11">网站设置<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src="http://www.layui.com/admin/std/dist/views/home/console.html" style="width: 100%;height: 100%;border: none;"></iframe>
                 </div>
             </div>
         </div>
     </div>
+</div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/layui/layui.js"></script>
     <script>
         //JavaScript代码区域
-        layui.use('element', function () {
-            var $ = layui.jquery;
-            var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+        var layer;
+        var element;
 
+        function openNewTab(layId, title, url) {
+            var $targetTitle = $(".layui-tab-title li[lay-id=" + layId + "]");
+            if ($targetTitle.length > 0) {
+                if ($targetTitle.hasClass("layui-this")) {
+                    //active.tabReload(tabLayID);
+                } else {
+                    element.tabChange('body-tab', layId);
+                }
+            } else {
+                //新增一个Tab项
+                var iframeHtml = '<iframe src="' + url + '" style="width: 100%;height: 100%;border: none;"></iframe>';
+                element.tabAdd('body-tab',
+                    {
+                        title: title,
+                        content: iframeHtml,
+                        id: layId
+                    });
+
+                element.tabChange('body-tab', layId);
+            }
+        }
+
+        function closeTab(layId) {
+            element.tabDelete('body-tab', layId);
+        }
+
+        layui.use(['element', 'layer'], function () {
+            var $ = layui.jquery;
+            element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            layer = layui.layer;
             //触发事件
             var active = {
-                tabAdd: function (id,title,url) {
+                tabAdd: function (layId,title,url) {
                     //新增一个Tab项
                     var iframeHtml = '<iframe src="' + url + '" style="width: 100%;height: 100%;border: none;"></iframe>';
                     element.tabAdd('body-tab',
                         {
                             title: title, 
                             content: iframeHtml,
-                            id: id
+                            id: layId
                         });
                 },
-                tabDelete: function (layID) {
+                tabDelete: function (layId) {
                     //删除指定Tab项
                     
-                    element.tabDelete('body-tab', layID); //删除：“商品管理”
-
+                    element.tabDelete('body-tab', layId); //删除：“商品管理”
 
                     othis.addClass('layui-btn-disabled');
                 },
-                tabChange: function (layID) {
+                tabChange: function (layId) {
                     //切换到指定Tab项
-                    element.tabChange('body-tab', layID); //切换到：用户管理
+                    element.tabChange('body-tab', layId); //切换到：用户管理
                 },
-                tabReload: function (layID) {
+                tabReload: function (layId) {
+
                 }
                 
             };
@@ -174,7 +226,7 @@
                 var menuID = $(elem).attr("data-menu-id");
                 var menuName = $elem.attr("data-menu-name");
                 var url = $elem.attr("data-url");
-                var tabLayID = "tab" + menuID;
+                var tabLayID = "tab-" + menuID;
 
                 var $targetTitle = $(".layui-tab-title li[lay-id=" + tabLayID + "]");
                 if ($targetTitle.length > 0) {
@@ -200,11 +252,9 @@
                 var menuName = $elem.attr("data-menu-name");
 
 
-                $("#left-nav-" + menuID).siblings().hide();
-                $("#left-nav-" + menuID).fadeIn(300);
+                $("#left-nav-" + menuID).siblings().fadeOut(400);
+                $("#left-nav-" + menuID).fadeIn(400);
             });
-
-            
         });
 
         
