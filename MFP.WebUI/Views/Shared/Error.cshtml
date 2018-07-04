@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using MFP.MvcExtension
+@model MFP.MvcExtension.ErrorInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -6,9 +12,19 @@
     <title>错误</title>
 </head>
 <body>
-    <hgroup>
-        <h1>错误。</h1>
-        <h2>处理你的请求时出错。</h2>
-    </hgroup>
+<hgroup>
+    @{
+        if (Model == null)
+        {
+            <h1>错误。</h1>
+            <h2>处理你的请求时出错。</h2>
+        }
+        else
+        {
+            <h1>@Model.Title</h1>
+            <h2>@Model.Msg</h2>
+        }
+    }
+</hgroup>
 </body>
 </html>

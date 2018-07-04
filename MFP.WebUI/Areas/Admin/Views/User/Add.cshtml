@@ -1,4 +1,4 @@
-﻿
+﻿@model MFP.Model.BGSystem.UserDTO
 @{
     Layout = null;
 }
@@ -10,33 +10,68 @@
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+    <style>
+        .layui-form-item .layui-input-inline {
+            width: 400px;
+        }
+    </style>
 </head>
 <body>
 
 <div style="margin: 20px; padding:20px; border: 2px solid #ddd;">
-    <form style="width: 550px;">
+    <form class="layui-form layui-form-pane" action="@Url.Action("Add","User",new { Area="Admin" })" method="post">
         <div class="layui-form-item">
             <label class="layui-form-label">用户ID</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" required=""  placeholder="" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <input type="text" name="UserID" required="required"  placeholder="" autocomplete="off" class="layui-input" value="@Model.UserID">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                @Html.ValidationMessageFor(model => model.UserID)
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <input type="text" name="Name" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.Name">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                @Html.ValidationMessageFor(model=>model.Name)
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Password" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="" >
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Password2" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                @Html.ValidationMessageFor(model => model.Password)
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">年龄</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <input type="text" name="Age" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.Age">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                @Html.ValidationMessageFor(model => model.Age)
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">邮箱</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <input type="text" name="Email" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.Email">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                @Html.ValidationMessageFor(model => model.Email)
             </div>
         </div>
         <div class="layui-form-item">

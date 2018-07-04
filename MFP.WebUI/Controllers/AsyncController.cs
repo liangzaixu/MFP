@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -18,7 +19,6 @@ namespace MFP.WebUI.Controllers
 
             //var task1 = Task.Factory.StartNew(() => _userService.AtAsyncHttpContextCurrentIsNull());
             var task1 = Task.Run(() => _userService.AtAsyncHttpContextCurrentIsNull());
-
             //挂起主线程，等待结果
             bool isNull = task1.GetAwaiter().GetResult();
 

@@ -42,8 +42,20 @@ layui.use(['table','layer'], function () {
         } else if (obj.event === 'delete') {
             
             layer.confirm('真的删除行么', function (index) {
-                obj.del();
-                layer.close(index);
+
+                $.ajax({
+                    url:url_delUser,
+                    type: 'post',
+                    dataType: 'json',
+                    success:function(data,textStatus,jqXhr) {
+                        layer.msg('删除成功');
+                        obj.del();
+                        layer.close(index);
+                    },
+                    error:function(XMLRequest,textStatus,errorThrown) {
+                        layer.msg('删除失败');
+                    }
+                });
             });
         } else if (obj.event === 'edit') {
             var layId = 'tab-edituser-' + data.UserID;

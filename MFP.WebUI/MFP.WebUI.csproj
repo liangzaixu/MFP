@@ -147,11 +147,17 @@
     <Compile Include="Controllers\AsyncController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HttpRequestController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\css\user.css" />
@@ -312,6 +318,8 @@
     <Content Include="Views\HttpClient\Index.cshtml" />
     <Content Include="Views\HttpRequest\HttpClientDemo.cshtml" />
     <Content Include="Views\HttpRequest\HttpWebRequestDemo.cshtml" />
+    <Content Include="Views\Information\Index.cshtml" />
+    <Content Include="Views\Shared\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,10 +346,20 @@
       <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>
       <Name>MFP.Model.BGSystem</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MFP.MvcExtension\MFP.MvcExtension.csproj">
+      <Project>{ee8c5db1-9a10-48ad-a9b4-fc9c452cd8af}</Project>
+      <Name>MFP.MvcExtension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MFP.Service.BGSystem\MFP.Service.BGSystem.csproj">
       <Project>{bef03e76-89d3-4428-8fdd-ee55c45e9640}</Project>
       <Name>MFP.Service.BGSystem</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

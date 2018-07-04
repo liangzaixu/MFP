@@ -1,0 +1,61 @@
+﻿@model MFP.MvcExtension.NormalInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>消息</title>
+
+    <style>
+        .warp {
+            
+        }
+        .title {
+            
+        }
+        .main {
+            
+        }
+    </style>
+    <script>
+        var redirectUrl='@Model.RedirectUrl';
+
+        window.onload=function() {
+            if (redirectUrl != '') {
+                document.getElementById('txt-countdown').style.display="inline";
+                timer();
+            }
+        }
+
+        function timer() {
+            var second = parseInt(document.getElementById('txt-countdown').innerText);
+            if (second == 1) {
+                window.location.replace(redirectUrl);
+            } else {
+                document.getElementById('txt-countdown').innerText=second - 1;
+            }
+            setTimeout(timer, 1000);
+        }
+    </script>
+</head>
+<body>
+    <div class="warp">
+        <h3 class="title">
+            @Model.Title
+        </h3>
+        <p class="main">
+            @Model.Msg
+        </p>
+        <p id="txt-countdown" style="display: none;">
+            <span id="second">@Model.Countdown</span>
+            <span>秒后页面将跳转至</span>
+            <span>@Model.Destination</span>
+            <a href="@Model.RedirectUrl">立即跳转</a>
+        </p>
+    </div>
+</body>
+</html>
