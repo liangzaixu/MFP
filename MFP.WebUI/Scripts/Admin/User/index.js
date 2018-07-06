@@ -46,6 +46,7 @@ layui.use(['table','layer'], function () {
                 $.ajax({
                     url:url_delUser,
                     type: 'post',
+                    data: { userID: encodeURIComponent("哈哈") },
                     dataType: 'json',
                     success:function(data,textStatus,jqXhr) {
                         layer.msg('删除成功');

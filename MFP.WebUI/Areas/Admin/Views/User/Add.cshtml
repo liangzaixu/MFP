@@ -23,7 +23,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">用户ID</label>
             <div class="layui-input-inline">
-                <input type="text" name="UserID" required="required"  placeholder="" autocomplete="off" class="layui-input" value="@Model.UserID">
+                @Html.TextBoxFor(model=>model.UserID,new { required = "required", @lay_verify = "required", placeholder = "", autocomplete = "off", @class="layui-input"})
+                @*<input type="text" name="UserID" required="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.UserID">*@
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model => model.UserID)
@@ -32,7 +33,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline">
-                <input type="text" name="Name" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.Name">
+                <input type="text" name="Name" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" >
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model=>model.Name)
@@ -59,7 +60,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">年龄</label>
             <div class="layui-input-inline">
-                <input type="text" name="Age" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.Age">
+                <input type="text" name="Age" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" >
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model => model.Age)
@@ -68,7 +69,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">邮箱</label>
             <div class="layui-input-inline">
-                <input type="text" name="Email" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.Email">
+                <input type="text" name="Email" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" >
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model => model.Email)

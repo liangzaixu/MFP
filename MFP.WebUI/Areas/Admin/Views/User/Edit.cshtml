@@ -33,6 +33,7 @@
                 <label class="layui-form-label">用户名</label>
                 <div class="layui-input-inline">
                     <input type="text" name="Name" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="@Model.Name">
+                   
                 </div>
                 <div class="layui-form-mid layui-word-aux">
                     @Html.ValidationMessageFor(model => model.Name)
@@ -78,9 +79,10 @@
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" lay-submit="" lay-filter="formDemo">提交修改</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>@ViewData["LALA"]
                 </div>
             </div>
+            
         </form>
     </div>
 
