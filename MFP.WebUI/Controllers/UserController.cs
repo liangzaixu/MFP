@@ -58,7 +58,7 @@ namespace MFP.WebUI.Controllers
             }
 
             UserService userService = new UserService();
-            return userService.EditUser(user);
+            return userService.EditUser(user,false);
         }
 
         public ActionResult AddUser()

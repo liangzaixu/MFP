@@ -54,9 +54,19 @@ namespace MFP.Service.BGSystem
             });
         }
 
-        public bool EditUser(UserDTO user)
+        public bool EditUser(UserDTO user,bool doEditPassword)
         {
-            return _userRepositroy.Update(user.ToEntity(), null);
+            string[] proNames;
+            if (doEditPassword)
+            {
+                proNames = new string[]{ "Name","Age","Email", "Pwd"};
+            }
+            else
+            {
+                proNames = new string[] { "Name", "Age", "Email" };
+            }
+
+            return _userRepositroy.Update(user.ToEntity(), proNames);
         }
 
         public bool DeleteUser(string userID)
@@ -82,5 +92,7 @@ namespace MFP.Service.BGSystem
                 return false;
             }
         }
+
+         
     }
 }

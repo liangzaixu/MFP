@@ -12,6 +12,10 @@ namespace MFP.Maper
     {
         public static User ToEntity(this UserDTO source)
         {
+            if (source.PasswordE != null)
+            {
+                source.Password = source.PasswordE;
+            }
             return new User()
             {
                 UserID = source.UserID,

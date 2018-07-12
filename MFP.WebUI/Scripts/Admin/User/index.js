@@ -42,16 +42,21 @@ layui.use(['table','layer'], function () {
         } else if (obj.event === 'delete') {
             
             layer.confirm('真的删除行么', function (index) {
-
+                layer.close(index);
                 $.ajax({
                     url:url_delUser,
                     type: 'post',
-                    data: { userID: encodeURIComponent("哈哈") },
+                    data: { userID: data.UserID },
                     dataType: 'json',
-                    success:function(data,textStatus,jqXhr) {
-                        layer.msg('删除成功');
-                        obj.del();
-                        layer.close(index);
+                    success: function (data, textStatus, jqXhr) {
+                        if (data.Status == 200) {
+                            layer.msg('删除成功');
+                            obj.del();
+                            return;
+                        }
+                        
+                        layer.msg(data.Msg);
+                        
                     },
                     error:function(XMLRequest,textStatus,errorThrown) {
                         layer.msg('删除失败');

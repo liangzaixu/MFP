@@ -73,7 +73,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
                 info.RedirectUrl = Url.Action("Add", "User", new { Area = "Admin" });
             }
 
-            return View("~/Views/Shared/Information.cshtml", info);
+            return View(Resources.Url_NormalInfoView, info);
         }
         #endregion
 
@@ -115,7 +115,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
                 return View(Resources.Url_ErrorView, new ErrorInfo()
                 {
                     Title = "用户不存在",
-                    Msg = string.Format("程序未能查找到ID为{0}的用户", userID)
+                    Msg = $"程序未能查找到ID为{userID}的用户"
                 });
             }
             return View(model);
@@ -125,23 +125,24 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         public ActionResult Edit(UserDTO model)
         {
             bool result;
+            bool doEditPassword=!(model.PasswordE == null && model.PasswordE2 == null);
+
             if (Request.IsAjaxRequest())
             {
                 if (ModelState.IsValid)
                 {
                     return Json(new AjaxResult(400, "参数不合法"));
                 }
-                result = _userService.EditUser(model);
+                result = _userService.EditUser(model, doEditPassword);
                 int status = result ? 200 : 500;
                 return Json(new AjaxResult(status));
             }
-
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            result = _userService.EditUser(model);
+            result = _userService.EditUser(model, doEditPassword);
             NormalInfo info = new NormalInfo();
             if (result)
             {
@@ -149,7 +150,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
                 info.Msg = "您成功修改了管理员资料。";
                 info.Countdown = 5;
                 info.Destination = "刚才的编辑页面。";
-                info.RedirectUrl = Url.Action("Add", "User", new { Area = "Admin" });
+                info.RedirectUrl = Url.Action("Edit", "User", new { Area = "Admin",UserID= model.UserID });
             }
             else
             {
@@ -157,7 +158,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
                 info.Msg = "修改管理员资料失败。";
                 info.Countdown = 5;
                 info.Destination = "刚才的编辑页面。";
-                info.RedirectUrl = Url.Action("Add", "User", new { Area = "Admin" });
+                info.RedirectUrl = Url.Action("Edit", "User", new { Area = "Admin", UserID = model.UserID });
             }
 
             return View(Resources.Url_NormalInfoView, info);

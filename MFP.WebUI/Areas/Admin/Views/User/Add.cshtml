@@ -10,11 +10,29 @@
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <style>
         .layui-form-item .layui-input-inline {
             width: 400px;
         }
+
     </style>
+    <script>
+        $(function() {
+            $("button[type=reset]").click(function () {
+                $(".field-validation-valid span").text("");
+            });
+            //$.extend($.validator.messages,
+            //    {
+            //        required: "此为必填项",
+            //        remote: "请修正此项",
+            //        email: "请输入有效的电子邮件地址"
+            //    });
+
+        })
+    </script>
 </head>
 <body>
 
@@ -33,7 +51,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline">
-                <input type="text" name="Name" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" >
+                @Html.TextBoxFor(model => model.Name, new { required = "required", @lay_verify = "required", placeholder = "", autocomplete = "off", @class = "layui-input" })
+                @*<input type="text" name="Name" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">*@
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model=>model.Name)
@@ -42,7 +61,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-inline">
-                <input type="text" name="Password" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="" >
+                @Html.PasswordFor(model => model.Password, new { required = "required", @lay_verify = "required", placeholder = "", autocomplete = "off", @class = "layui-input" })
+                @*<input type="text" name="Password" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="">*@
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model => model.Password)
@@ -51,7 +71,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">确认密码</label>
             <div class="layui-input-inline">
-                <input type="text" name="Password2" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="">
+                @Html.PasswordFor(model => model.Password2, new { required = "required", @lay_verify = "required", placeholder = "", autocomplete = "off", @class = "layui-input" })
+                @*<input type="password" name="Password2" required="" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="">*@
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model => model.Password)
@@ -60,7 +81,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">年龄</label>
             <div class="layui-input-inline">
-                <input type="text" name="Age" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" >
+                @Html.TextBoxFor(model=>model.Age,new  { type="number", required="required", @lay_verify = "required" ,placeholder = "", autocomplete = "off", @class="layui-input"} )
+                @*<input type="number" name="Age" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">*@
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model => model.Age)
@@ -69,7 +91,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">邮箱</label>
             <div class="layui-input-inline">
-                <input type="text" name="Email" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" >
+                @Html.TextBoxFor(model => model.Email, new { required = "required", @lay_verify = "required", placeholder = "", autocomplete = "off", @class = "layui-input" })
+                @*<input type="email" name="Email" required="required" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">*@
             </div>
             <div class="layui-form-mid layui-word-aux">
                 @Html.ValidationMessageFor(model => model.Email)

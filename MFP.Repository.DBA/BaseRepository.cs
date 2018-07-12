@@ -64,9 +64,8 @@ namespace MFP.Repository.DBA
 
         public bool Delete(Func<T,bool> predicate)
         {
-            return false;
-            dbSet.Where(predicate).ToArray();
-
+            IEnumerable<T> removeRange = dbSet.RemoveRange(Entities.Where(predicate).ToList());
+            return DbContext.SaveChanges()>0;
         }
 
         public bool Update(T entity, string[] proNames=null)
@@ -89,6 +88,7 @@ namespace MFP.Repository.DBA
                     entry.State = EntityState.Modified;
                 }
             }
+            num = DbContext.SaveChanges();
             return num>0;
         }
 
