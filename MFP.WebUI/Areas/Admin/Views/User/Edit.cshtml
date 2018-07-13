@@ -49,8 +49,10 @@
                 <label class="layui-form-label">密码</label>
                 <div class="layui-input-inline">
                     <input type="password" name="PasswordE"  placeholder="若不修改密码，请将此项留空" autocomplete="off" class="layui-input" value="@Model.PasswordE">
-                    <input type="password" name="Password" style="display: none;" required="" lay-verify="required" placeholder="" autocomplete="off"  value="000000">
-                    <input type="password" name="Password2" style="display: none;" required="" lay-verify="required" placeholder="" autocomplete="off"  value="000000">
+                    @*<input type="password" name="Password" style="display: none;" required="" lay-verify="required" placeholder="" autocomplete="off"  value="000000">
+                    <input type="password" name="Password2" style="display: none;" required="" lay-verify="required" placeholder="" autocomplete="off"  value="000000">*@
+                    <input type="hidden" name="Password" value="000000" />
+                    <input type="hidden" name="Password2" value="000000" />
                 </div>
                 <div class="layui-form-mid layui-word-aux">
                     @Html.ValidationMessageFor(model => model.PasswordE)
