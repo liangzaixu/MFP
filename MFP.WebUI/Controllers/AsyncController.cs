@@ -19,7 +19,7 @@ namespace MFP.WebUI.Controllers
 
             //var task1 = Task.Factory.StartNew(() => _userService.AtAsyncHttpContextCurrentIsNull());
             var task1 = Task.Run(() => _userService.AtAsyncHttpContextCurrentIsNull());
-            //挂起主线程，等待结果
+            //挂起主线程，等待结果, await本质就是在使用此方法挂起主线程
             bool isNull = task1.GetAwaiter().GetResult();
 
             //此处不会会挂起主线程
