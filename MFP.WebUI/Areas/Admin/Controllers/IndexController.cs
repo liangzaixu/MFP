@@ -6,9 +6,11 @@ using System.Web.Mvc;
 using MFP.Service.BGSystem;
 using MFP.Model.BGSystem;
 using System.Collections;
+using System.Threading;
 
 namespace MFP.WebUI.Areas.Admin.Controllers
 {
+    
     public class HomeController : Controller
     {
         private MenuService _menuService;
@@ -24,6 +26,8 @@ namespace MFP.WebUI.Areas.Admin.Controllers
             List<HeaderMenuDTO> menu = _menuService.GetMenus("admin");
             return View(menu);
         }
+
+
 
         //[HttpPost]
         //public JsonResult GetMenu()

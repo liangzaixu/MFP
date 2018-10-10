@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using MFP.Service.BGSystem;
@@ -24,6 +25,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult GetUser(int pageIndex,int pageSize,string keyWord="")
         {
+
             return Json(_userService.GetUserToPage(pageIndex, pageSize, keyWord),JsonRequestBehavior.AllowGet);
         }
         #endregion
