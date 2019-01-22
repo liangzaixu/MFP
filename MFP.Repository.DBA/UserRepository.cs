@@ -34,7 +34,7 @@ namespace MFP.Repository.DBA
             return _entities.SaveChanges()>0;
         }
 
-        public bool UpdateUser(UserDTO user,List<string> proNames)
+        public bool UpdateUser(UserViewModel user,List<string> proNames)
         {
             User entity =_entities.Users.Find(user.UserID);
 

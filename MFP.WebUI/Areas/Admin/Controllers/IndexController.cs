@@ -23,7 +23,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         // GET: Admin/Index
         public ActionResult Index()
         {
-            List<HeaderMenuDTO> menu = _menuService.GetMenus("admin");
+            List<HeaderMenuViewModel> menu = _menuService.GetMenus("admin");
             return View(menu);
         }
 

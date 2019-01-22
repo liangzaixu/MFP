@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace MFP.Model.BGSystem
 {
-    public class HeaderMenuDTO
+    public class SideMenuViewModel
     {
         private string _url;
-
-        public HeaderMenuDTO()
-        {
-            SideMenus = new List<SideMenuDTO>();
-        }
 
         public string MenuID { get; set; }
 
@@ -27,8 +22,12 @@ namespace MFP.Model.BGSystem
 
         public string IconUrl { get; set; }
 
+        public string HeaderMenuID { get; set; }
+
+        public string ParentID { get; set; }
+
         public int MenuOrder { get; set; }
 
-        public List<SideMenuDTO> SideMenus { get; set; }
+        public IList<SideMenuViewModel> Children { get; set; }
     }
 }

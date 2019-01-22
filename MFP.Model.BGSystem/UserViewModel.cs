@@ -8,7 +8,7 @@ using MFP.Model.BGSystem.Properties;
 
 namespace MFP.Model.BGSystem
 {
-    public class UserDTO
+    public class UserViewModel
     {
         [Display(Name = "用户ID")]
         [Required(ErrorMessageResourceName ="UserIDRequired", ErrorMessageResourceType = typeof(Resources))]

@@ -21,7 +21,7 @@ namespace MFP.Service.BGSystem
             _userRepositroy = new BaseRepository<User>();
         }
 
-        public PageResult<List<UserDTO>> GetUserToPage(int pageIndex=0, int pageSize = 10, string keyWord="")
+        public PageResult<List<UserViewModel>> GetUserToPage(int pageIndex=0, int pageSize = 10, string keyWord="")
         {
             IQueryable<User> userQuery = _userRepositroy.Entities.OrderBy(p => p.UserID);
             if (keyWord != "")
@@ -33,7 +33,7 @@ namespace MFP.Service.BGSystem
 
             List<User> userEntities=userQuery.Skip((pageIndex-1) * pageSize).Take(pageSize).ToList();
 
-            return new PageResult<List<UserDTO>>()
+            return new PageResult<List<UserViewModel>>()
             {
                 Status=200,
                 Msg="",
@@ -42,7 +42,7 @@ namespace MFP.Service.BGSystem
             };
         }
 
-        public bool AddUser(UserDTO user)
+        public bool AddUser(UserViewModel user)
         {
             return _userRepositroy.Insert(new User()
             {
@@ -54,7 +54,7 @@ namespace MFP.Service.BGSystem
             });
         }
 
-        public bool EditUser(UserDTO user,bool doEditPassword)
+        public bool EditUser(UserViewModel user,bool doEditPassword)
         {
             string[] proNames;
             if (doEditPassword)
@@ -74,7 +74,7 @@ namespace MFP.Service.BGSystem
             return _userRepositroy.Delete(userID);
         }
 
-        public UserDTO GetUserDetail(string userID)
+        public UserViewModel GetUserDetail(string userID)
         {
             User userDbModel = _userRepositroy.Entities.FirstOrDefault(m=>m.UserID==userID);
             return userDbModel.ToDto();

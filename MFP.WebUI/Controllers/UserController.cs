@@ -46,7 +46,7 @@ namespace MFP.WebUI.Controllers
         }
 
         [HttpPost]
-        public bool EditUser(UserDTO user)
+        public bool EditUser(UserViewModel user)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace MFP.WebUI.Controllers
         }
 
         [HttpPost]
-        public bool AddUser(UserDTO user)
+        public bool AddUser(UserViewModel user)
         {
             if (!Request.IsAjaxRequest())
             {

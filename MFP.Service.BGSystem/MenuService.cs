@@ -21,19 +21,19 @@ namespace MFP.Service.BGSystem
             sideMenuRep = new BaseRepository<V_SideMenu>();
         }
 
-        public List<HeaderMenuDTO> GetMenus(string userID)
+        public List<HeaderMenuViewModel> GetMenus(string userID)
         {
             List<V_HeaderMenu> headerMenus = _headerMenuRep.Entities.Where(u => u.UserID == userID).OrderBy(u => u.MenuOrder).ToList();
             List<V_SideMenu> sideMenus = sideMenuRep.Entities.Where(u => u.UserID == userID).OrderBy(u => u.MenuOrder).ToList();
 
-            List<HeaderMenuDTO> headerMenuDtos = headerMenus.ToDto();
+            List<HeaderMenuViewModel> headerMenuDtos = headerMenus.ToDto();
 
-            List<SideMenuDTO> sideMenuDtos = new List<SideMenuDTO>();
+            List<SideMenuViewModel> sideMenuDtos = new List<SideMenuViewModel>();
             List<V_SideMenu> sideMenuRoot = sideMenus.Where(m => m.ParentID == "root").ToList();
 
             foreach (var item in sideMenuRoot)
             {
-                SideMenuDTO temp= item.ToDto();
+                SideMenuViewModel temp= item.ToDto();
                 temp.Children = GetChildren(sideMenus, temp.MenuID, item.HasChildren==1);
 
 
@@ -43,7 +43,7 @@ namespace MFP.Service.BGSystem
                 {
                     if (headerMenuDtos.Count == 0)
                     {
-                        headerMenuDtos.Add(new HeaderMenuDTO()
+                        headerMenuDtos.Add(new HeaderMenuViewModel()
                         {
                             MenuID = "root"
                         });
@@ -61,14 +61,14 @@ namespace MFP.Service.BGSystem
 
         }
 
-        private IList<SideMenuDTO> GetChildren(List<V_SideMenu> source, string parentID, bool hasChildren)
+        private IList<SideMenuViewModel> GetChildren(List<V_SideMenu> source, string parentID, bool hasChildren)
         {
             if (!hasChildren)
             {
                 return null;
             }
 
-            IList<SideMenuDTO> target = source.Where(m => m.ParentID == parentID).OrderBy(m => m.MenuOrder).Select(m => new SideMenuDTO()
+            IList<SideMenuViewModel> target = source.Where(m => m.ParentID == parentID).OrderBy(m => m.MenuOrder).Select(m => new SideMenuViewModel()
             {
                 MenuID = m.MenuID,
                 MenuName = m.MenuName,

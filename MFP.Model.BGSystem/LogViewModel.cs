@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MFP.Model.BGSystem
 {
-    public class LogDTO
+    public class LogViewModel
     {
 
         public int ID { get; set; }

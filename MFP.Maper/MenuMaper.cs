@@ -13,9 +13,9 @@ namespace MFP.Maper
     {
 
         #region HeaderMenu
-        public static HeaderMenuDTO ToDto(this HeaderMenu source)
+        public static HeaderMenuViewModel ToDto(this HeaderMenu source)
         {
-            return new HeaderMenuDTO()
+            return new HeaderMenuViewModel()
             {
                 MenuID = source.MenuID,
                 MenuName=source.MenuName,
@@ -25,7 +25,7 @@ namespace MFP.Maper
             };
         }
 
-        public static HeaderMenu ToEntity(this HeaderMenuDTO source)
+        public static HeaderMenu ToEntity(this HeaderMenuViewModel source)
         {
             return new HeaderMenu()
             {
@@ -37,9 +37,9 @@ namespace MFP.Maper
             };
         }
 
-        public static List<HeaderMenuDTO> ToDto(this List<HeaderMenu> source)
+        public static List<HeaderMenuViewModel> ToDto(this List<HeaderMenu> source)
         {
-            List<HeaderMenuDTO> target = new List<HeaderMenuDTO>();
+            List<HeaderMenuViewModel> target = new List<HeaderMenuViewModel>();
 
             foreach (var item in source)
             {
@@ -48,7 +48,7 @@ namespace MFP.Maper
             return target;
         }
 
-        public static List<HeaderMenu> ToEntity(this List<HeaderMenuDTO> source)
+        public static List<HeaderMenu> ToEntity(this List<HeaderMenuViewModel> source)
         {
             List<HeaderMenu> target = new List<HeaderMenu>();
 
@@ -59,9 +59,9 @@ namespace MFP.Maper
             return target;
         }
 
-        public static HeaderMenuDTO ToDto(this V_HeaderMenu source)
+        public static HeaderMenuViewModel ToDto(this V_HeaderMenu source)
         {
-            return new HeaderMenuDTO()
+            return new HeaderMenuViewModel()
             {
                 MenuID = source.MenuID,
                 MenuName = source.MenuName,
@@ -71,9 +71,9 @@ namespace MFP.Maper
 
         }
 
-        public static List<HeaderMenuDTO> ToDto(this List<V_HeaderMenu> source)
+        public static List<HeaderMenuViewModel> ToDto(this List<V_HeaderMenu> source)
         {
-            List<HeaderMenuDTO> target = new List<HeaderMenuDTO>();
+            List<HeaderMenuViewModel> target = new List<HeaderMenuViewModel>();
 
             foreach (var item in source)
             {
@@ -84,9 +84,9 @@ namespace MFP.Maper
         #endregion
 
         #region SideMenu
-        public static SideMenuDTO ToDto(this SideMenu source)
+        public static SideMenuViewModel ToDto(this SideMenu source)
         {
-            return new SideMenuDTO()
+            return new SideMenuViewModel()
             {
                 MenuID = source.MenuID,
                 MenuName = source.MenuName,
@@ -98,7 +98,7 @@ namespace MFP.Maper
             };
         }
 
-        public static SideMenu ToEntity(this SideMenuDTO source)
+        public static SideMenu ToEntity(this SideMenuViewModel source)
         {
             return new SideMenu()
             {
@@ -112,9 +112,9 @@ namespace MFP.Maper
             };
         }
 
-        public static List<SideMenuDTO> ToDto(this List<SideMenu> source)
+        public static List<SideMenuViewModel> ToDto(this List<SideMenu> source)
         {
-            List<SideMenuDTO> target = new List<SideMenuDTO>();
+            List<SideMenuViewModel> target = new List<SideMenuViewModel>();
 
             foreach (var item in source)
             {
@@ -123,7 +123,7 @@ namespace MFP.Maper
             return target;
         }
 
-        public static List<SideMenu> ToEntity(this List<SideMenuDTO> source)
+        public static List<SideMenu> ToEntity(this List<SideMenuViewModel> source)
         {
             List<SideMenu> target = new List<SideMenu>();
 
@@ -134,9 +134,9 @@ namespace MFP.Maper
             return target;
         }
 
-        public static SideMenuDTO ToDto(this V_SideMenu source)
+        public static SideMenuViewModel ToDto(this V_SideMenu source)
         {
-            return new SideMenuDTO()
+            return new SideMenuViewModel()
             {
                 MenuID = source.MenuID,
                 MenuName = source.MenuName,
@@ -149,9 +149,9 @@ namespace MFP.Maper
 
         }
 
-        public static List<SideMenuDTO> ToDto(this List<V_SideMenu> source)
+        public static List<SideMenuViewModel> ToDto(this List<V_SideMenu> source)
         {
-            List<SideMenuDTO> target = new List<SideMenuDTO>();
+            List<SideMenuViewModel> target = new List<SideMenuViewModel>();
 
             foreach (var item in source)
             {

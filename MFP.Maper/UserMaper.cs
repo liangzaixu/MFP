@@ -10,7 +10,7 @@ namespace MFP.Maper
 {
     public static class UserMaper
     {
-        public static User ToEntity(this UserDTO source)
+        public static User ToEntity(this UserViewModel source)
         {
             if (source.PasswordE != null)
             {
@@ -26,9 +26,9 @@ namespace MFP.Maper
             };
         }
 
-        public static UserDTO ToDto(this User source)
+        public static UserViewModel ToDto(this User source)
         {
-            return new UserDTO()
+            return new UserViewModel()
             {
                 UserID = source.UserID,
                 Name = source.Name,
@@ -37,7 +37,7 @@ namespace MFP.Maper
             };
         }
 
-        public static List<User> ToEntity(this List<UserDTO> source)
+        public static List<User> ToEntity(this List<UserViewModel> source)
         {
             List<User> result = new List<User>();
 
@@ -49,9 +49,9 @@ namespace MFP.Maper
             return result;
         }
 
-        public static List<UserDTO> ToDto(this List<User> source)
+        public static List<UserViewModel> ToDto(this List<User> source)
         {
-            List<UserDTO> result = new List<UserDTO>();
+            List<UserViewModel> result = new List<UserViewModel>();
 
             foreach (var item in source)
             {

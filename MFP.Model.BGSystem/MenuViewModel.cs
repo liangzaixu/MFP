@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MFP.Model.BGSystem
 {
-    public class MenuDTO
+    public class MenuViewModel
     {
-        public IList<HeaderMenuDTO> HeaderMenus { get; set; }
+        public IList<HeaderMenuViewModel> HeaderMenus { get; set; }
 
-        public IList<SideMenuDTO> SideMenus { get; set; }
+        public IList<SideMenuViewModel> SideMenus { get; set; }
     }
 }

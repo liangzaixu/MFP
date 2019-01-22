@@ -37,7 +37,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(UserDTO model)
+        public ActionResult Add(UserViewModel model)
         {
             bool result;
             if (Request.IsAjaxRequest())
@@ -111,7 +111,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
                 });
             }
 
-            UserDTO model= _userService.GetUserDetail(userID);
+            UserViewModel model= _userService.GetUserDetail(userID);
             if (model == null)
             {
                 return View(Resources.Url_ErrorView, new ErrorInfo()
@@ -124,7 +124,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(UserDTO model)
+        public ActionResult Edit(UserViewModel model)
         {
             bool result;
             bool doEditPassword=!(model.PasswordE == null && model.PasswordE2 == null);
