@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,9 +53,9 @@
       <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>
       <Name>MFP.Model.BGSystem</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MFP.Repository.DBA\MFP.Repository.DBA.csproj">
+    <ProjectReference Include="..\MFP.Repository.DBA\MFP.Repository.Entities.csproj">
       <Project>{72ff5ecc-a90f-4cd4-a9ef-a6b7a4a90625}</Project>
-      <Name>MFP.Repository.DBA</Name>
+      <Name>MFP.Repository.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

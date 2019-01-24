@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace MFP.Repository.DBA
+namespace MFP.Repository.Entities
 {
     public class DbContextFactory
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MFP.Repository.DBA.Entity
+namespace MFP.Repository.Entities.Entity
 {
     [Table("RoleDetailAction")]
     public class RoleDetailAction

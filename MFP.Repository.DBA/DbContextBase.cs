@@ -4,17 +4,19 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using MFP.Repository.DBA.Entity;
-using MFP.Repository.DBA.Map;
+using MFP.Repository.Entities.Entity;
+using MFP.Repository.Entities.Map;
 using System.Collections.Generic;
 using System.Collections;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace MFP.Repository.DBA
+namespace MFP.Repository.Entities
 {
 
-    public  partial class DbContextBase : DbContext,IUnitOfWork
+
+    public  partial class DbContextBase : IdentityDbContext<User>, IUnitOfWork
     {
-        public DbContextBase(): base("name=MvcDemoEntities")
+        public DbContextBase(): base("name=MvcDemoEntities", throwIfV1Schema: false)
         {
             //Database.SetInitializer<MvcDemoEntities>(new DropCreateDatabaseAlways<MvcDemoEntities>());
             //Database.SetInitializer<MvcDemoEntities>(new CreateDatabaseIfNotExists<MvcDemoEntities>());
@@ -67,8 +69,13 @@ namespace MFP.Repository.DBA
         }
     }
 
-    public partial class DbContextBase : DbContext, IUnitOfWork
+    public partial class DbContextBase
     {
+        public static DbContextBase Create()
+        {
+            return new DbContextBase();
+        }
+
         public bool TransactionEnabled { get { return Database.CurrentTransaction != null; } }
 
         #region 方法
@@ -195,10 +202,10 @@ namespace MFP.Repository.DBA
             context.Users.Add(new User()
             {
                  UserID="admin",
-                 Name="管理员",
+                 UserName="管理员",
                  Age=99,
                  Email="admin@qq.com",
-                 Pwd="123456"
+                 PasswordHash="123456"
             });
 
             string drop = @"DROP TABLE V_HeaderMenu;

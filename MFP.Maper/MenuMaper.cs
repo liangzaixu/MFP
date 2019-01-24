@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MFP.Model.BGSystem;
-using MFP.Repository.DBA.Entity;
+using MFP.Repository.Entities.Entity;
 
 
 namespace MFP.Maper

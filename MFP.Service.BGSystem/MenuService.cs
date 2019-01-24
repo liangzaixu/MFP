@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MFP.Model.BGSystem;
-using MFP.Repository.DBA;
-using MFP.Repository.DBA.Entity;
+using MFP.Repository.Entities;
+using MFP.Repository.Entities.Entity;
 using MFP.Maper;
 
 namespace MFP.Service.BGSystem

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace MFP.Repository.DBA.Entity
+namespace MFP.Repository.Entities.Entity
 {
     public class Lodging
     {

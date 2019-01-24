@@ -15,7 +15,7 @@ namespace ConsoleTest
             var task1 = DoCalculate();
 
             Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine(await task1);
+            //Console.WriteLine(await task1);
             Console.WriteLine(2);
             Console.ReadKey();
 

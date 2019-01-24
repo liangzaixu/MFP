@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using MFP.Model.BGSystem;
-using MFP.Repository.DBA;
-using MFP.Repository.DBA.Entity;
+using MFP.Repository.Entities;
+using MFP.Repository.Entities.Entity;
 using MFP.Maper;
 using MFP.CommonModel;
 
@@ -26,7 +26,7 @@ namespace MFP.Service.BGSystem
             IQueryable<User> userQuery = _userRepositroy.Entities.OrderBy(p => p.UserID);
             if (keyWord != "")
             {
-                userQuery = userQuery.Where(p => p.UserID.Contains(keyWord) || p.Name.Contains(keyWord));
+                userQuery = userQuery.Where(p => p.UserID.Contains(keyWord) || p.UserName.Contains(keyWord));
             }
 
             int total = userQuery.Count();
@@ -47,10 +47,10 @@ namespace MFP.Service.BGSystem
             return _userRepositroy.Insert(new User()
             {
                 UserID = user.UserID,
-                Name = user.Name,
+                UserName = user.Name,
                 Email = user.Email,
                 Age = user.Age,
-                Pwd = user.Password
+                PasswordHash = user.Password
             });
         }
 

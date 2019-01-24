@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MFP.Repository.DBA.Entity;
+using MFP.Repository.Entities.Entity;
 using MFP.Model.BGSystem;
 
 namespace MFP.Maper
@@ -19,10 +19,10 @@ namespace MFP.Maper
             return new User()
             {
                 UserID = source.UserID,
-                Name = source.Name,
+                UserName = source.Name,
                 Age = source.Age,
                 Email = source.Email,
-                Pwd = source.Password
+                PasswordHash = source.Password
             };
         }
 
@@ -31,7 +31,7 @@ namespace MFP.Maper
             return new UserViewModel()
             {
                 UserID = source.UserID,
-                Name = source.Name,
+                Name = source.UserName,
                 Age = source.Age,
                 Email = source.Email,
             };

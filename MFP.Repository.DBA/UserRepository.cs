@@ -4,10 +4,10 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MFP.Repository.DBA.Entity;
+using MFP.Repository.Entities.Entity;
 using MFP.Model.BGSystem;
 
-namespace MFP.Repository.DBA
+namespace MFP.Repository.Entities
 {
     public class UserRepository
     {
@@ -23,7 +23,7 @@ namespace MFP.Repository.DBA
             IQueryable<User> userQuery= _entities.Users.OrderBy(p=>p.UserID);
             if (keyWord != "")
             {
-                userQuery = userQuery.Where(p => p.UserID.Contains(keyWord) || p.Name.Contains(keyWord));
+                userQuery = userQuery.Where(p => p.UserID.Contains(keyWord) || p.UserName.Contains(keyWord));
             }
             return userQuery.Skip(pageIndex*pageSize).Take(pageSize).ToList();
         }
@@ -40,10 +40,10 @@ namespace MFP.Repository.DBA
 
             if (entity != null)
             {
-                entity.Name = user.Name;
+                entity.UserName = user.Name;
                 entity.Age = user.Age;
                 entity.Email = user.Email;
-                entity.Pwd = user.Password;
+                //entity.Pwd = user.Password;
             }
 
             return _entities.SaveChanges()>0;

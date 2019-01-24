@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MFP.Repository.DBA.Entity
+namespace MFP.Repository.Entities.Entity
 {
     [Table("RoleSideMenu")]
     public class RoleSideMenu

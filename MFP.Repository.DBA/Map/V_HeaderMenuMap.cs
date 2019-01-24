@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MFP.Repository.DBA.Entity;
+using MFP.Repository.Entities.Entity;
 
-namespace MFP.Repository.DBA.Map
+namespace MFP.Repository.Entities.Map
 {
     public class V_HeaderMenuMap: EntityTypeConfiguration<V_HeaderMenu>
     {

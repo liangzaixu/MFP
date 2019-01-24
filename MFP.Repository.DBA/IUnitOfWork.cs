@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MFP.Repository.DBA
+namespace MFP.Repository.Entities
 {
     public interface IUnitOfWork
     {

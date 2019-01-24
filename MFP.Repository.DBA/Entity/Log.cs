@@ -1,4 +1,4 @@
-namespace MFP.Repository.DBA.Entity
+namespace MFP.Repository.Entities.Entity
 {
     using System;
     using System.Collections.Generic;

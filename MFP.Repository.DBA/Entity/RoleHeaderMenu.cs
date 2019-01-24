@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MFP.Repository.DBA.Entity
+namespace MFP.Repository.Entities.Entity
 {
     [Table("RoleHeaderMenu")]
     public class RoleHeaderMenu
