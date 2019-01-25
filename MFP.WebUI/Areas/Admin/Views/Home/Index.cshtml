@@ -1,5 +1,5 @@
 ﻿@using MFP.Model.BGSystem
-@model IEnumerable<MFP.Model.BGSystem.HeaderMenuDTO>
+@model IEnumerable<MFP.Model.BGSystem.HeaderMenuViewModel>
 @{
     Layout = null;
     
@@ -65,7 +65,7 @@
             @{
                 bool flagH = true;
             }
-            @foreach (HeaderMenuDTO item in Model)
+            @foreach (HeaderMenuViewModel item in Model)
             {
                 if (item.MenuID == "root")
                 {
@@ -114,10 +114,10 @@
             </ul>-->
                 
             @{ bool flag = true;}
-            @foreach (HeaderMenuDTO headerItem in Model)
+            @foreach (HeaderMenuViewModel headerItem in Model)
             {
                 <ul id="left-nav-@headerItem.MenuID" class="layui-nav layui-nav-tree" lay-filter="left-nav"  data-menu-id="@headerItem.MenuID" style="@(flag? string.Empty : "display:none")">
-                    @foreach (SideMenuDTO sideItem in headerItem.SideMenus)
+                    @foreach (SideMenuViewModel sideItem in headerItem.SideMenus)
                     {
                         <li class="layui-nav-item layui-nav-itemed">
                             <a class="" href="@sideItem.Url" data-menu-id="@sideItem.MenuID">@sideItem.MenuName</a>

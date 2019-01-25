@@ -14,19 +14,23 @@ namespace MFP.Repository.Entities
 {
 
 
-    public  partial class DbContextBase : IdentityDbContext<User>, IUnitOfWork
+    public  partial class DbContextBase : IdentityDbContext<User,Role,string,UserLogin,UserRole,UserClaim>, IUnitOfWork
     {
-        public DbContextBase(): base("name=MvcDemoEntities", throwIfV1Schema: false)
+        public DbContextBase(): base("name=connectionStr")
         {
             //Database.SetInitializer<MvcDemoEntities>(new DropCreateDatabaseAlways<MvcDemoEntities>());
             //Database.SetInitializer<MvcDemoEntities>(new CreateDatabaseIfNotExists<MvcDemoEntities>());
             //Database.SetInitializer<MvcDemoEntities>(new CreateDatabaseIfNotExists<MvcDemoEntities>());
             //Database.SetInitializer<MvcDemoEntities>(null);
             Database.SetInitializer(new SeedingDataInitializer());
+
         }
 
         public virtual DbSet<Log> Logs { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+
+        //public override IDbSet<User> Users { get; set; }
+
+        //public virtual IDbSet<Role> Roles { get; set; }
 
         public virtual DbSet<City> Citys { get; set; }
 
@@ -42,16 +46,24 @@ namespace MFP.Repository.Entities
 
         public virtual DbSet<DetailAction> DetailAction { get; set; }
 
-        public virtual DbSet<RoleHeaderMenu> RoleHeaderMenu { get; set; }
+        //public virtual DbSet<RoleHeaderMenu> RoleHeaderMenu { get; set; }
 
-        public virtual DbSet<RoleSideMenu> RoleSideMenu { get; set; }
+        //public virtual DbSet<RoleSideMenu> RoleSideMenu { get; set; }
 
-        public virtual DbSet<RoleDetailAction> RoleDetailAction { get; set; }
+        //public virtual DbSet<RoleDetailAction> RoleDetailAction { get; set; }
 
-        public virtual DbSet<RoleUser> RoleUsers { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Role>().ToTable("Role");
+            modelBuilder.Entity<UserRole>().ToTable("UserRole");
+            modelBuilder.Entity<UserLogin>().ToTable("UserLogin");
+            modelBuilder.Entity<UserClaim>().ToTable("UserClaim");
+
+
 
             // 禁用多对多关系表的级联删除
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
@@ -59,13 +71,13 @@ namespace MFP.Repository.Entities
             modelBuilder.Configurations.Add(new V_HeaderMenuMap());
             modelBuilder.Configurations.Add(new V_SideMenuMap());
             modelBuilder.Configurations.Add(new V_DetailActionMap());
-            modelBuilder.Configurations.Add(new RoleHeaderMenuMap());
-            modelBuilder.Configurations.Add(new RoleSideMenuMap());
-            modelBuilder.Configurations.Add(new RoleDetailActionMap());
-            modelBuilder.Configurations.Add(new RoleUserMap());
+            //modelBuilder.Configurations.Add(new RoleHeaderMenuMap());
+            //modelBuilder.Configurations.Add(new RoleSideMenuMap());
+            //modelBuilder.Configurations.Add(new RoleDetailActionMap());
+            //modelBuilder.Configurations.Add(new UserRoleMap());
+            //modelBuilder.Configurations.Add(new UserLoginMap());
 
-            base.OnModelCreating(modelBuilder);
-            //modelBuilder.Configurations.
+
         }
     }
 
@@ -199,6 +211,8 @@ namespace MFP.Repository.Entities
     {
         protected override void Seed(DbContextBase context)
         {
+
+
             context.Users.Add(new User()
             {
                  UserID="admin",
@@ -208,37 +222,37 @@ namespace MFP.Repository.Entities
                  PasswordHash="123456"
             });
 
-            string drop = @"DROP TABLE V_HeaderMenu;
-                            DROP TABLE V_SideMenu;
-                            DROP TABLE V_DetailAction";
+            //string drop = @"DROP TABLE V_HeaderMenu;
+            //                DROP TABLE V_SideMenu;
+            //                DROP TABLE V_DetailAction";
 
-            context.Database.ExecuteSqlCommand(drop);
+            //context.Database.ExecuteSqlCommand(drop);
 
-            string createV_HeaderMenu= @"CREATE VIEW [dbo].[V_HeaderMenu]
-                                    AS
-                                    SELECT     RU.UserID , RHM.RoleID AS RoleID, HM.MenuID, HM.MenuName, HM.Url,HM.IconUrl, HM.MenuOrder
-                                    FROM         dbo.RoleHeaderMenu AS RHM INNER JOIN
-                                                          dbo.HeaderMenu AS HM ON RHM.MenuID = HM.MenuID INNER JOIN
-                                                          dbo.RoleUser AS RU ON RHM.RoleID = RU.RoleID;";
-            string createV_SideMenu = @"
-                                    CREATE VIEW [dbo].[V_SideMenu]
-                                    AS
-                                    SELECT     RU.UserID , RSM.RoleID AS RoleID, SM.MenuID, SM.MenuName, SM.Url,SM.IconUrl, SM.HeaderMenuID, SM.ParentID, SM.MenuOrder,
-                                               (CASE WHEN EXISTS ( select TOP 1 1 from SideMenu AS CSM where CSM.ParentID=SM.MenuID)  THEN 1 ELSE 0 END) AS HasChildren
-                                    FROM         dbo.RoleSideMenu AS RSM INNER JOIN
-                                                          dbo.SideMenu AS SM ON RSM.MenuID = SM.MenuID INNER JOIN
-                                                          dbo.RoleUser AS RU ON RU.RoleID = RSM.RoleID";
-            string createV_DetailAction = @"
-                                    CREATE VIEW [dbo].[V_DetailAction ]
-                                    AS
-                                    SELECT     RU.UserID, RU.RoleID, DA.ActionID, DA.ActionName, DA.Title, DA.SideMenuID
-                                    FROM         dbo.DetailAction AS DA INNER JOIN
-                                                          dbo.RoleDetailAction AS RDA ON DA.ActionID = RDA.ActionID LEFT OUTER JOIN
-                                                          dbo.RoleUser AS RU ON RDA.RoleID = RU.RoleID";
+            //string createV_HeaderMenu= @"CREATE VIEW [dbo].[V_HeaderMenu]
+            //                        AS
+            //                        SELECT     RU.UserID , RHM.RoleID AS RoleID, HM.MenuID, HM.MenuName, HM.Url,HM.IconUrl, HM.MenuOrder
+            //                        FROM         dbo.RoleHeaderMenu AS RHM INNER JOIN
+            //                                              dbo.HeaderMenu AS HM ON RHM.MenuID = HM.MenuID INNER JOIN
+            //                                              dbo.RoleUser AS RU ON RHM.RoleID = RU.RoleID;";
+            //string createV_SideMenu = @"
+            //                        CREATE VIEW [dbo].[V_SideMenu]
+            //                        AS
+            //                        SELECT     RU.UserID , RSM.RoleID AS RoleID, SM.MenuID, SM.MenuName, SM.Url,SM.IconUrl, SM.HeaderMenuID, SM.ParentID, SM.MenuOrder,
+            //                                   (CASE WHEN EXISTS ( select TOP 1 1 from SideMenu AS CSM where CSM.ParentID=SM.MenuID)  THEN 1 ELSE 0 END) AS HasChildren
+            //                        FROM         dbo.RoleSideMenu AS RSM INNER JOIN
+            //                                              dbo.SideMenu AS SM ON RSM.MenuID = SM.MenuID INNER JOIN
+            //                                              dbo.RoleUser AS RU ON RU.RoleID = RSM.RoleID";
+            //string createV_DetailAction = @"
+            //                        CREATE VIEW [dbo].[V_DetailAction ]
+            //                        AS
+            //                        SELECT     RU.UserID, RU.RoleID, DA.ActionID, DA.ActionName, DA.Title, DA.SideMenuID
+            //                        FROM         dbo.DetailAction AS DA INNER JOIN
+            //                                              dbo.RoleDetailAction AS RDA ON DA.ActionID = RDA.ActionID LEFT OUTER JOIN
+            //                                              dbo.RoleUser AS RU ON RDA.RoleID = RU.RoleID";
 
-            context.Database.ExecuteSqlCommand(createV_HeaderMenu);
-            context.Database.ExecuteSqlCommand(createV_SideMenu);
-            context.Database.ExecuteSqlCommand(createV_DetailAction);
+            //context.Database.ExecuteSqlCommand(createV_HeaderMenu);
+            //context.Database.ExecuteSqlCommand(createV_SideMenu);
+            //context.Database.ExecuteSqlCommand(createV_DetailAction);
 
             base.Seed(context);
         }

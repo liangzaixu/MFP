@@ -9,12 +9,13 @@ using MFP.Repository.Entities.Entity;
 
 namespace MFP.Repository.Entities.Map
 {
-    public class UserRoleMap : EntityTypeConfiguration<UserRole>
+    public class UserLoginMap : EntityTypeConfiguration<UserLogin>
     {
-        public UserRoleMap()
+        public UserLoginMap()
         {
-            HasKey(m => new { m.RoleId, m.UserId });
-            ToTable("UserRole");
+            HasKey(m => new { m.UserId, m.ProviderKey,m.LoginProvider });
+            ToTable("UserLogin");
+
         }
     }
 }

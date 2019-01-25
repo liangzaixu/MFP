@@ -1,5 +1,5 @@
 ﻿@using MFP.Model.BGSystem
-@model  IEnumerable<MFP.Model.BGSystem.UserDTO>
+@model  IEnumerable<MFP.Model.BGSystem.UserViewModel>
 
 @{
     ViewBag.Title = "Home Page";
@@ -90,7 +90,7 @@
         </th>
     </tr>
     
-    @foreach (UserDTO item in Model)
+    @foreach (UserViewModel item in Model)
     {
         <tr>
             <td>@item.UserID</td>

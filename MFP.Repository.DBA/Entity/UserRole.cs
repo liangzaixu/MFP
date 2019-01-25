@@ -5,17 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MFP.Repository.Entities.Entity
 {
-    [Table("RoleUser")]
-    public class RoleUser
+    [Table("UserRole")]
+    public class UserRole : IdentityUserRole<string>
     {
-        public string UserID { get; set; }
-        public int RoleID { get; set; }
-
-        public virtual User User { get; set; }
-
-        public virtual Role Role { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace MFP.Repository.Entities.Entity
     using System.Data.Entity.Spatial;
 
     [Table("User")]
-    public partial class User : IdentityUser
+    public class User : IdentityUser<string,UserLogin, UserRole, UserClaim>
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
@@ -30,5 +30,6 @@ namespace MFP.Repository.Entities.Entity
 
         [Required]
         public int Age { get; set; }
+
     }
 }
