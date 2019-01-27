@@ -79,11 +79,18 @@
   <ItemGroup>
     <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MFP.Repository.DBA\MFP.Repository.Entities.csproj">
+      <Project>{72ff5ecc-a90f-4cd4-a9ef-a6b7a4a90625}</Project>
+      <Name>MFP.Repository.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

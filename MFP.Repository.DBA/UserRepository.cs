@@ -6,12 +6,40 @@ using System.Text;
 using System.Threading.Tasks;
 using MFP.Repository.Entities.Entity;
 using MFP.Model.BGSystem;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MFP.Repository.Entities
 {
-    public class UserRepository
+    public class UserRepository<T> : UserStore<T, Role, string, UserLogin, UserRole, UserClaim>,IUserStore<T> where T: User
+    {
+        public UserRepository()
+            : this((DbContextBase)DbContextFactory.GetDbContext())
+        {
+            this.DisposeContext = true;
+        }
+
+        public UserRepository(DbContextBase context) : base(context)
+        {
+
+        }
+    }
+
+
+    public class UserRepository:UserStore<User, Role, string, UserLogin, UserRole, UserClaim>
     {
         private DbContextBase _entities = new DbContextBase();
+
+        public UserRepository()
+            : this((DbContextBase)DbContextFactory.GetDbContext())
+        {
+            this.DisposeContext = true;
+        }
+
+        public UserRepository(DbContextBase context) : base(context)
+        {
+            
+        }
 
         public List<User> GetAllUser()
         {
