@@ -14,12 +14,16 @@ namespace MFP.WebUI.Controllers
             return View();
         }
 
-        public ActionResult SignIn()
+        [AllowAnonymous]
+        public ActionResult SignIn(string returnUrl)
         {
             return View();
         }
 
-        public ActionResult SignUp()
+
+
+        [AllowAnonymous]
+        public ActionResult SignUp(string returnUrl)
         {
             return View();
         }
