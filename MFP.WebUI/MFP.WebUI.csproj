@@ -358,8 +358,9 @@
     <Content Include="Views\Information\Index.cshtml" />
     <Content Include="Views\Shared\Information.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Account\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,6 +382,10 @@
     <ProjectReference Include="..\MFP.CommonModel\MFP.CommonModel.csproj">
       <Project>{f3d330d1-696b-495a-a308-ce5bca1e022e}</Project>
       <Name>MFP.CommonModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MFP.Model.Authentication\MFP.Model.Identity.csproj">
+      <Project>{219d2adf-cb1e-47c4-a42e-6ba467252f32}</Project>
+      <Name>MFP.Model.Identity</Name>
     </ProjectReference>
     <ProjectReference Include="..\MFP.Model.BGSystem\MFP.Model.BGSystem.csproj">
       <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>

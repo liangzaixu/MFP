@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function() {
+            $("#btn_submit").click(function() {
+                $.ajax({
+                    type:"POST",
+                    url: "/Account/Login",
+                    dataType: "JSON",
+                    data: {
+                        model: {
+                            AccountID: $("#userid").val(),
+                            Password: $("#password").val(),
+                        },
+                        rememberMe:true
+                    },
+                    success:function(data, textStatus, jqXHR) {
+                        
+                    },
+                    error:function(xhr, textStatus, errorThrow) {
+                        
+                    },
+                    beforeSend:function(xhr) {
+                        
+                    },
+                    complete:function(xhr) {
+                        
+                    }
+
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+<form action=@Url.Action("Login","Account") method="post">
+<div>
+    登录
+</div>
+<div>
+    账号：<input type="text" id="userid" name="AccountId"/>
+</div>
+<div>
+    密码:<input type="password" id="password" name="Password"/>
+</div>
+
+<div>
+    <input type="button" id="btn_submit"/>
+
+</div>
+</form>
+</body>
+</html>
