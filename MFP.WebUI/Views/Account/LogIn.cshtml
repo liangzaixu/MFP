@@ -1,4 +1,4 @@
-﻿
+﻿@model MFP.Model.Identity.LoginViewModel
 @{
     Layout = null;
 }
@@ -43,21 +43,23 @@
     </script>
 </head>
 <body>
-<form action=@Url.Action("Login","Account") method="post">
-<div>
-    登录
-</div>
-<div>
-    账号：<input type="text" id="userid" name="AccountId"/>
-</div>
-<div>
-    密码:<input type="password" id="password" name="Password"/>
-</div>
+<form action=@Url.Action("Login", "Account") method="post">
+    @Html.AntiForgeryToken()
+    <div>
+        登录
+    </div>
+    <div>
+        账号：<input type="text" id="userid" name="Email"/>
+    </div>
+    <div>
+        密码:<input type="password" id="password" name="Password"/>
+    </div>
+    @Html.CheckBoxFor(model=>model.RememberMe)
 
-<div>
-    <input type="button" id="btn_submit"/>
+    <div>
+        <input type="submit" id="btn_submit" value="登录"/>
 
-</div>
+    </div>
 </form>
 </body>
 </html>

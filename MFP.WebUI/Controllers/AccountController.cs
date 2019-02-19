@@ -9,11 +9,17 @@ using MFP.Service.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin;
 
 namespace MFP.WebUI.Controllers
 {
     public class AccountController : Controller
     {
+        public AccountController()
+        {
+
+        }
+
         public AccountController(SignInService signInService, UserService userService)
         {
             this._signInService = signInService;
@@ -28,7 +34,7 @@ namespace MFP.WebUI.Controllers
         {
             get
             {
-                return _signInService?? HttpContext.GetOwinContext().Get<UserService>();
+                return _signInService?? HttpContext.GetOwinContext().Get<SignInService>();
             }
 
             set
@@ -50,11 +56,10 @@ namespace MFP.WebUI.Controllers
             }
         }
 
-
-
         // GET: Account
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -62,13 +67,14 @@ namespace MFP.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model,bool rememberme,string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model,string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -112,9 +118,5 @@ namespace MFP.WebUI.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
-
-
-        
     }
 }
