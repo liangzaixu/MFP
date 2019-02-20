@@ -87,6 +87,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MFP.Model.Authentication\MFP.Model.Identity.csproj">
+      <Project>{219d2adf-cb1e-47c4-a42e-6ba467252f32}</Project>
+      <Name>MFP.Model.Identity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MFP.Repository.DBA\MFP.Repository.Entities.csproj">
       <Project>{72ff5ecc-a90f-4cd4-a9ef-a6b7a4a90625}</Project>
       <Name>MFP.Repository.Entities</Name>

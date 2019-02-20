@@ -67,7 +67,6 @@ namespace MFP.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-
             return View();
         }
 
@@ -100,8 +99,25 @@ namespace MFP.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult SignUp(string returnUrl)
+        public ActionResult SignUp()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task< ActionResult> SignUp(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            //IdentityResult result = await UserService.CreateAsync(model);
+            //if (result.Succeeded)
+            //{
+            //    await SignInService.SignIn()
+            //}
             return View();
         }
 

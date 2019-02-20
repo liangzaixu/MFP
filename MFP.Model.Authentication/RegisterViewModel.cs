@@ -11,6 +11,14 @@ namespace MFP.Model.Identity
     {
         [Required]
         [EmailAddress]
+        [Display(Name = "账号")]
+        public string UserID { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "姓名")]
+        public string UserName { get; set; }
+        [Required]
+        [EmailAddress]
         [Display(Name = "电子邮件")]
         public string Email { get; set; }
 

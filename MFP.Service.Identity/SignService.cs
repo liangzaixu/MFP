@@ -27,5 +27,10 @@ namespace MFP.Service.Identity
         {
             return new SignInService(context.GetUserManager<UserService>(), context.Authentication);
         }
+
+        //public async Task SignInAsync(string accountID, string password)
+        //{
+        //    await this.SignInAsync(new User() {Email=accountID,})
+        //}
     }
 }

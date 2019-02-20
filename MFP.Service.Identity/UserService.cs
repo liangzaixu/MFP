@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using MFP.Repository.Entities;
 using MFP.Repository.Entities.Entity;
+using MFP.Model.Identity;
 
 namespace MFP.Service.Identity
 {
@@ -66,5 +67,19 @@ public class UserService : UserManager<User>
             }
             return manager;
         }
+
+        public async Task<IdentityResult> CreateAsync(RegisterViewModel model)
+        {
+            User user = new User()
+            {
+                UserID = model.UserID,
+                UserName = model.UserName,
+                Email = model.Email,
+            };
+            IdentityResult identityResult = await this.CreateAsync(user, model.Password);
+            return identityResult;
+        }
+
+
     }
 }
