@@ -14,7 +14,7 @@ using MFP.Model.Identity;
 namespace MFP.Service.Identity
 {
 
-public class UserService : UserManager<User>
+    public class UserService : UserManager<User>
     {
         public UserService(IUserStore<User> store)
             : base(store)
@@ -72,13 +72,37 @@ public class UserService : UserManager<User>
         {
             User user = new User()
             {
-                UserID = model.UserID,
+                UserId = model.UserId,
                 UserName = model.UserName,
                 Email = model.Email,
             };
             IdentityResult identityResult = await this.CreateAsync(user, model.Password);
             return identityResult;
         }
+
+        /// <summary>
+        ///     Find a user by phone number
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public virtual Task<User> FindByPhoneNumberAsync(string phoneNumber)
+        {
+            if (phoneNumber == null)
+            {
+                throw new ArgumentNullException("userName");
+            }
+
+            var cast = Store as IUserStoreEx;
+
+            if (cast == null)
+            {
+                throw new ArgumentNullException("cast");
+            }
+
+            return cast.FindByPhoneNumberAsync(phoneNumber);
+        }
+
+       
 
 
     }

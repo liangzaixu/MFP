@@ -9,7 +9,7 @@ using Owin;
 using MFP.Service.Identity;
 
 
-namespace Test
+namespace MFP.WebUI
 {
     public partial class Startup
     {
@@ -20,6 +20,7 @@ namespace Test
             app.CreatePerOwinContext<DbContextBase>(DbContextBase.Create);
             app.CreatePerOwinContext<UserService>(UserService.Create);
             app.CreatePerOwinContext<SignInService>(SignInService.Create);
+
 
             // 使应用程序可以使用 Cookie 来存储已登录用户的信息
             // 并使用 Cookie 来临时存储有关使用第三方登录提供程序登录的用户的信息

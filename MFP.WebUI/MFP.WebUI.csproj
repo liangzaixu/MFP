@@ -368,7 +368,7 @@
     <Content Include="Views\Information\Index.cshtml" />
     <Content Include="Views\Shared\Information.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\Lockout.cshtml" />
   </ItemGroup>

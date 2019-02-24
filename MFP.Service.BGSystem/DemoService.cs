@@ -27,7 +27,7 @@ namespace MFP.Service.BGSystem
             {
                 DbSession.BeginTransaction();
                 string userID = Guid.NewGuid().ToString();
-                userRepositroy.Insert(new User() {UserID = userID, UserName = "雄介", Age = 18, Email = "123", PasswordHash = "123"});
+                userRepositroy.Insert(new User() {UserId = userID, UserName = "雄介", Age = 18, Email = "123", PasswordHash = "123"});
                 logRepositroy.Insert(new Log() {UserID = userID, IP = "127.0.0.1", OperateTime = DateTime.Now});
                 DbSession.CommitTransaction();
             }

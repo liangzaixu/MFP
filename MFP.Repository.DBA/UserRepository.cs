@@ -48,10 +48,10 @@ namespace MFP.Repository.Entities
 
         public List<User> GetUserToPage(int pageSize = 10, int pageIndex = 0, string keyWord = "")
         {
-            IQueryable<User> userQuery= _entities.Users.OrderBy(p=>p.UserID);
+            IQueryable<User> userQuery= _entities.Users.OrderBy(p=>p.UserId);
             if (keyWord != "")
             {
-                userQuery = userQuery.Where(p => p.UserID.Contains(keyWord) || p.UserName.Contains(keyWord));
+                userQuery = userQuery.Where(p => p.UserId.Contains(keyWord) || p.UserName.Contains(keyWord));
             }
             return userQuery.Skip(pageIndex*pageSize).Take(pageSize).ToList();
         }
@@ -90,7 +90,7 @@ namespace MFP.Repository.Entities
 
         public User GetDetail(string userID)
         {
-            return _entities.Users.FirstOrDefault(p => p.UserID == userID);
+            return _entities.Users.FirstOrDefault(p => p.UserId == userID);
         }
 
         public void JustForTest()

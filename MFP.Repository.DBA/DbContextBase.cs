@@ -211,11 +211,9 @@ namespace MFP.Repository.Entities
     {
         protected override void Seed(DbContextBase context)
         {
-
-
             context.Users.Add(new User()
             {
-                 UserID="admin",
+                 UserId="admin",
                  UserName="π‹¿Ì‘±",
                  Age=99,
                  Email="admin@qq.com",

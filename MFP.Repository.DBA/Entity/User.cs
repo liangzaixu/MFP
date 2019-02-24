@@ -25,7 +25,7 @@ namespace MFP.Repository.Entities.Entity
         [Key]
         [Column(TypeName = "varchar")]
         [StringLength(50)]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
 
         [Required]

@@ -30,7 +30,7 @@ namespace MFP.WebUI.Controllers
         private UserService _userService;
 
 
-        public SignInService SignInService
+        public SignInService SigninSer
         {
             get
             {
@@ -43,11 +43,11 @@ namespace MFP.WebUI.Controllers
             }
         }
 
-        public UserService UserService
+        public UserService UserSer
         {
             get
             {
-                return _userService;
+                return _userService ?? HttpContext.GetOwinContext().Get<UserService>();
             }
 
             set
@@ -59,13 +59,12 @@ namespace MFP.WebUI.Controllers
         // GET: Account
         public ActionResult Index()
         {
-
             return View();
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult SignIn(string returnUrl)
         {
             return View();
         }
@@ -73,15 +72,16 @@ namespace MFP.WebUI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model,string returnUrl)
+        public async Task<ActionResult> SignIn(LoginViewModel model,string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+
             // 这不会计入到为执行帐户锁定而统计的登录失败次数中
             // 若要在多次输入错误密码的情况下触发帐户锁定，请更改为 shouldLockout: true
-            var result = await SignInService.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+             var result = await SigninSer.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -95,7 +95,6 @@ namespace MFP.WebUI.Controllers
                     ModelState.AddModelError("", "无效的登录尝试。");
                     return View(model);
             }
-            return View();
         }
 
         [AllowAnonymous]
@@ -106,19 +105,27 @@ namespace MFP.WebUI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task< ActionResult> SignUp(RegisterViewModel model)
+        public async Task< ActionResult> SignUp(RegisterViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            //IdentityResult result = await UserService.CreateAsync(model);
-            //if (result.Succeeded)
-            //{
-            //    await SignInService.SignIn()
-            //}
-            return View();
+            IdentityResult result = await UserSer.CreateAsync(model);
+            if (result.Succeeded)
+            {
+                var  signResult = await SigninSer.PasswordSignInAsync(model.Email, model.Password,true,false);
+                switch (signResult)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    default:
+                        ModelState.AddModelError("", "无效的登录尝试。");
+                        return View(model);
+                }
+            }
+            return View(model);
         }
 
         public ActionResult SendCode()
