@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MFP.Repository.Entities
 {
-    public class UserRepository<T> : UserStore<T, Role, string, UserLogin, UserRole, UserClaim>,IUserStore<T> where T: User
+    public class UserRepository<T> : UserStore<T, Role, string, UserLogin, UserRole, UserClaim>,IUserStore<T>, IUserStoreEx<T> where T: User
     {
+        private readonly DbContextBase _context;
+        private readonly DbSet<T> _uEntity;
+
         public UserRepository()
             : this((DbContextBase)DbContextFactory.GetDbContext())
         {
@@ -21,7 +25,18 @@ namespace MFP.Repository.Entities
 
         public UserRepository(DbContextBase context) : base(context)
         {
+            _context = context;
+            _uEntity = context.Set<T>();
+        }
 
+        public Task<T> FindByPhoneNumberAsync(string phoneNumber)
+        {
+            return _uEntity.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
+        }
+
+        public Task<T> FindByUserIdAsync(string userId)
+        {
+            return _uEntity.FirstOrDefaultAsync(u => u.UserId == userId);
         }
     }
 
@@ -132,6 +147,16 @@ namespace MFP.Repository.Entities
             {
 
             }
+        }
+
+        public Task<User> FindByPhoneNumberAsync(string phoneNumber)
+        {
+            return _entities.Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
+        }
+
+        public Task<User> FindByUserIdAsync(string userId)
+        {
+            return _entities.Users.FirstOrDefaultAsync(u => u.UserId == userId);
         }
     }
 }

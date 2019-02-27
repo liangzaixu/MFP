@@ -10,19 +10,12 @@ namespace MFP.Model.Identity
 {
     public class LoginViewModel
     {
-
+        /// <summary>
+        /// 账号可以是UserId\PhoneNumber\Email
+        /// </summary>
         [Display(Name = "账号")]
-        [EmailAddress]
-        [RegularExpression(@"^[0-9]{1,20}$",ErrorMessage = "请输入0-9的数字")]
-        public string AccountId
-        {
-            get;
-            set;
-        }
-
-        [Display(Name = "电子邮件")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [RegularExpression(@"^[a-zA-Z0-9.-_@]{3,20}|^[0-9]{11}$|^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$", ErrorMessage = "可以使用账号/手机号码/邮箱登录")]
+        public string AccountId { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

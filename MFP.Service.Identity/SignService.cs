@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using MFP.Repository.Entities.Entity;
 using Microsoft.AspNet.Identity;
 
+
 namespace MFP.Service.Identity
 {
     public class SignInService : SignInManager<User, string>
@@ -45,11 +46,6 @@ namespace MFP.Service.Identity
             return new SignInService(context.GetUserManager<UserService>(), context.Authentication);
         }
 
-        ////public async Task SignInAsync(string accountID, string password)
-        ////{
-        ////    await this.SignInAsync(new User() {Email=accountID,})
-        ////}
-
         /// <summary>
         /// Sign in the user in using the userId/userName/email and password
         /// </summary>
@@ -64,43 +60,37 @@ namespace MFP.Service.Identity
             {
                 return SignInStatus.Failure;
             }
-            var user = await UserManager.FindByNameAsync(accountID);
-
-            if (user == null)
-            {
-                user = await UserService.FindByPhoneNumberAsync(accountID);
-            }
-
-            if (user == null)
-            {
-                user = await UserManager.FindByEmailAsync(accountID);
-            }
+            var user = await UserService.FindByAccountIdAsync(accountID).WithCurrentCulture();
 
             if (user == null)
             {
                 return SignInStatus.Failure;
             }
-
-            if (await UserManager.IsLockedOutAsync(user.Id))
+            if (await UserManager.IsLockedOutAsync(user.Id).WithCurrentCulture())
             {
                 return SignInStatus.LockedOut;
             }
-            if (await UserManager.CheckPasswordAsync(user, password))
+            if (await UserManager.CheckPasswordAsync(user, password).WithCurrentCulture())
             {
-                await UserManager.ResetAccessFailedCountAsync(user.Id);
-                await this.SignInAsync(user, isPersistent, true);
+                //if (!await IsTwoFactorEnabled(user))
+                //{
+                //    await UserManager.ResetAccessFailedCountAsync(user.Id).WithCurrentCulture();
+                //}
+                //return await SignInOrTwoFactor(user, isPersistent).WithCurrentCulture();
+
+                await SignInAsync(user, isPersistent,true).WithCurrentCulture();
+                return SignInStatus.Success;
             }
             if (shouldLockout)
             {
                 // If lockout is requested, increment access failed count which might lock out the user
-                await UserManager.AccessFailedAsync(user.Id);
-                if (await UserManager.IsLockedOutAsync(user.Id))
+                await UserManager.AccessFailedAsync(user.Id).WithCurrentCulture();
+                if (await UserManager.IsLockedOutAsync(user.Id).WithCurrentCulture())
                 {
                     return SignInStatus.LockedOut;
                 }
             }
             return SignInStatus.Failure;
         }
-
     }
 }

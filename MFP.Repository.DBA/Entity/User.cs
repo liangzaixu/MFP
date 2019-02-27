@@ -14,6 +14,18 @@ namespace MFP.Repository.Entities.Entity
     [Table("User")]
     public class User : IdentityUser<string,UserLogin, UserRole, UserClaim>
     {
+        public User()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
+
+        public User(string userName)
+            : this()
+        {
+            UserName = userName;
+        }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // 请注意，authenticationType 必须与 CookieAuthenticationOptions.AuthenticationType 中定义的相应项匹配
@@ -22,7 +34,6 @@ namespace MFP.Repository.Entities.Entity
             return userIdentity;
         }
 
-        [Key]
         [Column(TypeName = "varchar")]
         [StringLength(50)]
         public string UserId { get; set; }

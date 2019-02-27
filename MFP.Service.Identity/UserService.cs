@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using MFP.Repository.Entities;
@@ -35,10 +34,10 @@ namespace MFP.Service.Identity
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
 
             // 配置用户锁定默认值
@@ -75,6 +74,7 @@ namespace MFP.Service.Identity
                 UserId = model.UserId,
                 UserName = model.UserName,
                 Email = model.Email,
+                PhoneNumber=model.PhoneNumber
             };
             IdentityResult identityResult = await this.CreateAsync(user, model.Password);
             return identityResult;
@@ -92,7 +92,7 @@ namespace MFP.Service.Identity
                 throw new ArgumentNullException("userName");
             }
 
-            var cast = Store as IUserStoreEx;
+            var cast = Store as UserRepository<User>;
 
             if (cast == null)
             {
@@ -102,8 +102,44 @@ namespace MFP.Service.Identity
             return cast.FindByPhoneNumberAsync(phoneNumber);
         }
 
-       
+        /// <summary>
+        ///     Find a user by user id
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public virtual Task<User> FindByAccountIdAsync(string accountID)
+        {
+            if (accountID == null)
+            {
+                throw new ArgumentNullException("accountID");
+            }
 
+            var cast = Store as UserRepository<User>;
 
+            if (cast == null)
+            {
+                throw new ArgumentNullException("cast");
+            }
+
+            var result = cast.FindByUserIdAsync(accountID);
+            if (result.GetAwaiter().GetResult() != null)
+            {
+                return result;
+            }
+
+            result = cast.FindByPhoneNumberAsync(accountID);
+            if (result.GetAwaiter().GetResult() != null)
+            {
+                return result;
+            }
+
+            result = cast.FindByEmailAsync(accountID);
+            if (result.GetAwaiter().GetResult() != null)
+            {
+                return result;
+            }
+
+            return null;
+        }
     }
 }

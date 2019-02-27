@@ -30,14 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -52,8 +44,8 @@
   <ItemGroup>
     <Compile Include="DemoService.cs" />
     <Compile Include="MenuService.cs" />
-    <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MFP.CommonModel\MFP.CommonModel.csproj">
@@ -64,13 +56,25 @@
       <Project>{9758def4-f462-43bc-8e0e-2403e0ac05d6}</Project>
       <Name>MFP.Maper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MFP.Model.BGSystem\MFP.Model.BGSystem.csproj">
+      <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>
+      <Name>MFP.Model.BGSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MFP.Repository.DBA\MFP.Repository.Entities.csproj">
       <Project>{72ff5ecc-a90f-4cd4-a9ef-a6b7a4a90625}</Project>
       <Name>MFP.Repository.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MFP.Model.BGSystem\MFP.Model.BGSystem.csproj">
-      <Project>{8145996e-9c4d-4a8c-8207-d3b4e7ff6d6b}</Project>
-      <Name>MFP.Model.BGSystem</Name>
+    <ProjectReference Include="..\Microsoft.AspNet.Identity.Core\Microsoft.AspNet.Identity.Core.csproj">
+      <Project>{D2F24972-0F56-4C18-BD65-C26A320A0C68}</Project>
+      <Name>Microsoft.AspNet.Identity.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.AspNet.Identity.EntityFramework\Microsoft.AspNet.Identity.EntityFramework.csproj">
+      <Project>{d7298dad-ab04-4502-9567-0461d0ad059e}</Project>
+      <Name>Microsoft.AspNet.Identity.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.AspNet.Identity.Owin\Microsoft.AspNet.Identity.Owin.csproj">
+      <Project>{943170eb-f4e7-4a6d-989e-2cf6c681dd89}</Project>
+      <Name>Microsoft.AspNet.Identity.Owin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

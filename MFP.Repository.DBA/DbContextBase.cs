@@ -57,7 +57,7 @@ namespace MFP.Repository.Entities
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<User>().ToTable("User").HasKey(u => u.Id);
             modelBuilder.Entity<Role>().ToTable("Role");
             modelBuilder.Entity<UserRole>().ToTable("UserRole");
             modelBuilder.Entity<UserLogin>().ToTable("UserLogin");
