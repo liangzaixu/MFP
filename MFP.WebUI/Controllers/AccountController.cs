@@ -17,7 +17,6 @@ namespace MFP.WebUI.Controllers
     {
         public AccountController()
         {
-
         }
 
         public AccountController(SignInService signInService, UserService userService)
@@ -28,6 +27,14 @@ namespace MFP.WebUI.Controllers
 
         private SignInService _signInService;
         private UserService _userService;
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
 
 
         public SignInService SigninSer
@@ -59,7 +66,7 @@ namespace MFP.WebUI.Controllers
         // GET: Account
         public ActionResult Index()
         {
-            return View();
+            return View("SignIn");
         }
 
         [HttpGet]
@@ -125,7 +132,24 @@ namespace MFP.WebUI.Controllers
                         return View(model);
                 }
             }
+
+            AddErrors(result);
             return View(model);
+        }
+
+        //[HttpGet]
+        //public ActionResult SignOut()
+        //{
+        //    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignOut()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult SendCode()
@@ -140,6 +164,14 @@ namespace MFP.WebUI.Controllers
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }

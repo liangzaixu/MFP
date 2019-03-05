@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MFP.Repository.Entities
 {
-    public class UserRepository<T> : UserStore<T, Role, string, UserLogin, UserRole, UserClaim>,IUserStore<T>, IUserStoreEx<T> where T: User
+    public class UserRepository<T> : UserStore<T, Role, string, UserLogin, UserRole, UserClaim>,IUserStore<T> where T: User
     {
         private readonly DbContextBase _context;
         private readonly DbSet<T> _uEntity;
@@ -34,9 +34,9 @@ namespace MFP.Repository.Entities
             return _uEntity.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
         }
 
-        public Task<T> FindByUserIdAsync(string userId)
+        public Task<T> FindByAccountIDAsync(string userId)
         {
-            return _uEntity.FirstOrDefaultAsync(u => u.UserId == userId);
+            return _uEntity.FirstOrDefaultAsync(u => u.AccountId == userId);
         }
     }
 
@@ -63,10 +63,10 @@ namespace MFP.Repository.Entities
 
         public List<User> GetUserToPage(int pageSize = 10, int pageIndex = 0, string keyWord = "")
         {
-            IQueryable<User> userQuery= _entities.Users.OrderBy(p=>p.UserId);
+            IQueryable<User> userQuery= _entities.Users.OrderBy(p=>p.AccountId);
             if (keyWord != "")
             {
-                userQuery = userQuery.Where(p => p.UserId.Contains(keyWord) || p.UserName.Contains(keyWord));
+                userQuery = userQuery.Where(p => p.AccountId.Contains(keyWord) || p.UserName.Contains(keyWord));
             }
             return userQuery.Skip(pageIndex*pageSize).Take(pageSize).ToList();
         }
@@ -105,7 +105,7 @@ namespace MFP.Repository.Entities
 
         public User GetDetail(string userID)
         {
-            return _entities.Users.FirstOrDefault(p => p.UserId == userID);
+            return _entities.Users.FirstOrDefault(p => p.AccountId == userID);
         }
 
         public void JustForTest()
@@ -154,9 +154,9 @@ namespace MFP.Repository.Entities
             return _entities.Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
         }
 
-        public Task<User> FindByUserIdAsync(string userId)
+        public Task<User> FindByAccountIDAsync(string accountID)
         {
-            return _entities.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+            return _entities.Users.FirstOrDefaultAsync(u => u.AccountId == accountID);
         }
     }
 }

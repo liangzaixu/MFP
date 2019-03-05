@@ -24,7 +24,19 @@
 </head>
 <body>
 <div>
-    
+    <div>
+        @if (ViewBag.IsAuthenticated)
+        {
+            <span>您已经登录</span>
+            <span>@ViewBag.UserId</span>
+            <span>@ViewBag.UserName</span>
+            <span>@ViewBag.Name</span>
+        }
+        else
+        {
+            <span>您尚未登录</span>
+        }
+    </div>
     <p>@Html.ActionLink("用户管理", "Index","User") \ <a href="@Url.Action("Index","User")" >用户管理</a></p>
     <p>@Html.ActionLink("后台管理", "Index",new RouteValueDictionary(new { action = "Index",controller="Home",area="Admin" }) ) </p>
     <p>@Html.ActionLink("登录", "SignIn","Account") </p>

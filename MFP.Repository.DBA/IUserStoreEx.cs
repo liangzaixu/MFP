@@ -7,8 +7,5 @@ using System.Threading.Tasks;
 
 namespace MFP.Repository.Entities
 {
-    interface IUserStoreEx<TUser>
-    {
-        Task<TUser> FindByPhoneNumberAsync(string phoneNumber);
-    }
+
 }

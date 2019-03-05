@@ -71,7 +71,7 @@ namespace MFP.Service.Identity
         {
             User user = new User()
             {
-                UserId = model.UserId,
+                AccountId = model.UserId,
                 UserName = model.UserName,
                 Email = model.Email,
                 PhoneNumber=model.PhoneNumber
@@ -107,7 +107,7 @@ namespace MFP.Service.Identity
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        public virtual Task<User> FindByAccountIdAsync(string accountID)
+        public virtual async Task<User> FindByAccountIdAsync(string accountID)
         {
             if (accountID == null)
             {
@@ -121,20 +121,20 @@ namespace MFP.Service.Identity
                 throw new ArgumentNullException("cast");
             }
 
-            var result = cast.FindByUserIdAsync(accountID);
-            if (result.GetAwaiter().GetResult() != null)
+            var result = await cast.FindByAccountIDAsync(accountID);
+            if (result != null)
             {
                 return result;
             }
 
-            result = cast.FindByPhoneNumberAsync(accountID);
-            if (result.GetAwaiter().GetResult() != null)
+            result = await cast.FindByPhoneNumberAsync(accountID);
+            if (result!= null)
             {
                 return result;
             }
 
-            result = cast.FindByEmailAsync(accountID);
-            if (result.GetAwaiter().GetResult() != null)
+            result = await cast.FindByEmailAsync(accountID);
+            if (result!= null)
             {
                 return result;
             }

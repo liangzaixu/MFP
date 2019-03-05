@@ -23,10 +23,10 @@ namespace MFP.Service.BGSystem
 
         public PageResult<List<UserViewModel>> GetUserToPage(int pageIndex=0, int pageSize = 10, string keyWord="")
         {
-            IQueryable<User> userQuery = _userRepositroy.Entities.OrderBy(p => p.UserId);
+            IQueryable<User> userQuery = _userRepositroy.Entities.OrderBy(p => p.AccountId);
             if (keyWord != "")
             {
-                userQuery = userQuery.Where(p => p.UserId.Contains(keyWord) || p.UserName.Contains(keyWord));
+                userQuery = userQuery.Where(p => p.AccountId.Contains(keyWord) || p.UserName.Contains(keyWord));
             }
 
             int total = userQuery.Count();
@@ -46,7 +46,7 @@ namespace MFP.Service.BGSystem
         {
             return _userRepositroy.Insert(new User()
             {
-                UserId = user.UserID,
+                AccountId = user.UserID,
                 UserName = user.Name,
                 Email = user.Email,
                 Age = user.Age,
@@ -76,7 +76,7 @@ namespace MFP.Service.BGSystem
 
         public UserViewModel GetUserDetail(string userID)
         {
-            User userDbModel = _userRepositroy.Entities.FirstOrDefault(m=>m.UserId==userID);
+            User userDbModel = _userRepositroy.Entities.FirstOrDefault(m=>m.AccountId==userID);
             return userDbModel.ToDto();
         }
 

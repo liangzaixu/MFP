@@ -213,7 +213,7 @@ namespace MFP.Repository.Entities
         {
             context.Users.Add(new User()
             {
-                 UserId="admin",
+                 AccountId="admin",
                  UserName="π‹¿Ì‘±",
                  Age=99,
                  Email="admin@qq.com",

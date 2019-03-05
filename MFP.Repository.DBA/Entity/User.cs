@@ -36,7 +36,7 @@ namespace MFP.Repository.Entities.Entity
 
         [Column(TypeName = "varchar")]
         [StringLength(50)]
-        public string UserId { get; set; }
+        public string AccountId { get; set; }
 
 
         [Required]

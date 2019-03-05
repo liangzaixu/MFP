@@ -18,7 +18,7 @@ namespace MFP.Maper
             }
             return new User()
             {
-                UserId = source.UserID,
+                AccountId = source.UserID,
                 UserName = source.Name,
                 Age = source.Age,
                 Email = source.Email,
@@ -30,7 +30,7 @@ namespace MFP.Maper
         {
             return new UserViewModel()
             {
-                UserID = source.UserId,
+                UserID = source.AccountId,
                 Name = source.UserName,
                 Age = source.Age,
                 Email = source.Email,
