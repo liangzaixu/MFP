@@ -4,20 +4,39 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Filters;
+using MFP.Model.Identity;
+using MFP.MvcExtension;
+using MFP.Service.Identity;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace MFP.WebUI.Controllers
 {
     [SessionState(System.Web.SessionState.SessionStateBehavior.ReadOnly)]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        public HomeController()
+        {
+
+        }
+
+        public HomeController(UserService userSer):base()
+        {
+
+        }
+
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.UserId = User.Identity.GetUserId();
-            ViewBag.UserName = User.Identity.GetUserName();
-            ViewBag.Name = User.Identity.Name;
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.UserId = OnlineUser.AccountId;
+                ViewBag.UserName = OnlineUser.UserName;
+                ViewBag.Email = OnlineUser.Email;
+            }
             return View();
         }
 

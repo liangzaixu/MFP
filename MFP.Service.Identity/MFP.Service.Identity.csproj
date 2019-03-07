@@ -79,6 +79,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MFP.Maper\MFP.Maper.csproj">
+      <Project>{9758def4-f462-43bc-8e0e-2403e0ac05d6}</Project>
+      <Name>MFP.Maper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MFP.Model.Authentication\MFP.Model.Identity.csproj">
       <Project>{219d2adf-cb1e-47c4-a42e-6ba467252f32}</Project>
       <Name>MFP.Model.Identity</Name>

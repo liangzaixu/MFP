@@ -17,6 +17,7 @@ namespace MFP.WebUI.Controllers
     {
         public AccountController()
         {
+
         }
 
         public AccountController(SignInService signInService, UserService userService)

@@ -16,7 +16,7 @@ namespace MFP.Repository.Entities
 
     public  partial class DbContextBase : IdentityDbContext<User,Role,string,UserLogin,UserRole,UserClaim>, IUnitOfWork
     {
-        public DbContextBase(): base("name=DefaultConnection")
+        public DbContextBase(): base("name=connectionStr")
         {
             //Database.SetInitializer<MvcDemoEntities>(new DropCreateDatabaseAlways<MvcDemoEntities>());
             //Database.SetInitializer<MvcDemoEntities>(new CreateDatabaseIfNotExists<MvcDemoEntities>());

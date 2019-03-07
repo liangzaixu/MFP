@@ -9,15 +9,20 @@ using Microsoft.Owin;
 using MFP.Repository.Entities;
 using MFP.Repository.Entities.Entity;
 using MFP.Model.Identity;
+using System.Security.Principal;
+using MFP.Maper;
 
 namespace MFP.Service.Identity
 {
 
     public class UserService : UserManager<User>
     {
+        private readonly UserRepository<User> _repository;
+
         public UserService(IUserStore<User> store)
             : base(store)
         {
+            _repository = store as UserRepository<User>;
         }
 
         public static UserService Create(IdentityFactoryOptions<UserService> options, IOwinContext context)
@@ -141,5 +146,32 @@ namespace MFP.Service.Identity
 
             return null;
         }
+
+        public async Task<UserViewModel> GetUserAsync(IPrincipal user)
+        {
+            string userId = user.Identity.GetUserId();
+            if (user==null || string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            var result = await Store.FindByIdAsync(userId);
+
+            return result?.ToViewModel();
+        }
+
+        public UserViewModel GetUser(IPrincipal user)
+        {
+            string userId = user.Identity.GetUserId();
+            if (user == null || string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            var result = _repository.FindByKey(userId);
+
+            return result?.ToViewModel();
+        }
+
     }
 }

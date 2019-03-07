@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using MFP.Model.BGSystem;
 using MFP.Repository.Entities;
 using MFP.Repository.Entities.Entity;
 using MFP.Maper;
 using MFP.CommonModel;
+using MFP.Model.Identity;
 
 namespace MFP.Service.BGSystem
 {
@@ -38,20 +38,13 @@ namespace MFP.Service.BGSystem
                 Status=200,
                 Msg="",
                 Total = total,
-                Data= userEntities.ToDto()
+                Data= userEntities.ToViewModel()
             };
         }
 
         public bool AddUser(UserViewModel user)
         {
-            return _userRepositroy.Insert(new User()
-            {
-                AccountId = user.UserID,
-                UserName = user.Name,
-                Email = user.Email,
-                Age = user.Age,
-                PasswordHash = user.Password
-            });
+            return _userRepositroy.Insert(user.ToEntity());
         }
 
         public bool EditUser(UserViewModel user,bool doEditPassword)
@@ -77,7 +70,7 @@ namespace MFP.Service.BGSystem
         public UserViewModel GetUserDetail(string userID)
         {
             User userDbModel = _userRepositroy.Entities.FirstOrDefault(m=>m.AccountId==userID);
-            return userDbModel.ToDto();
+            return userDbModel.ToViewModel();
         }
 
 

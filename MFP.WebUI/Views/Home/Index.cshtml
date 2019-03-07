@@ -30,7 +30,11 @@
             <span>您已经登录</span>
             <span>@ViewBag.UserId</span>
             <span>@ViewBag.UserName</span>
-            <span>@ViewBag.Name</span>
+            <span>@ViewBag.Email</span>
+            <a href="javascript:document.getElementById('sign-out-form').submit()">注销 </a>
+            <form id="sign-out-form" method="post" action="@Url.Action("SignOut","Account")">
+                @Html.AntiForgeryToken();
+            </form>
         }
         else
         {
@@ -41,6 +45,7 @@
     <p>@Html.ActionLink("后台管理", "Index",new RouteValueDictionary(new { action = "Index",controller="Home",area="Admin" }) ) </p>
     <p>@Html.ActionLink("登录", "SignIn","Account") </p>
     <p>@Html.ActionLink("注册", "SignUp","Account") </p>
+    <p> </p>
 </div>
 <div></div>
 </body>

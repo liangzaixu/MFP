@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MFP.Repository.Entities.Entity;
-using MFP.Model.BGSystem;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MFP.Repository.Entities
 {
-    public class UserRepository<T> : UserStore<T, Role, string, UserLogin, UserRole, UserClaim>,IUserStore<T> where T: User
+    public class UserRepository<T> : UserStore<T, Role, string, UserLogin, UserRole, UserClaim>, IUserStore<T> where T: User
     {
         private readonly DbContextBase _context;
         private readonly DbSet<T> _uEntity;
@@ -34,9 +33,14 @@ namespace MFP.Repository.Entities
             return _uEntity.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
         }
 
-        public Task<T> FindByAccountIDAsync(string userId)
+        public Task<T> FindByAccountIDAsync(string accountId)
         {
-            return _uEntity.FirstOrDefaultAsync(u => u.AccountId == userId);
+            return _uEntity.FirstOrDefaultAsync(u => u.AccountId == accountId);
+        }
+
+        public T FindByKey(string key)
+        {
+            return _uEntity.Find(key);
         }
     }
 
@@ -77,20 +81,20 @@ namespace MFP.Repository.Entities
             return _entities.SaveChanges()>0;
         }
 
-        public bool UpdateUser(UserViewModel user,List<string> proNames)
-        {
-            User entity =_entities.Users.Find(user.UserID);
+        //public bool UpdateUser(UserViewModel user,List<string> proNames)
+        //{
+        //    User entity =_entities.Users.Find(user.UserID);
 
-            if (entity != null)
-            {
-                entity.UserName = user.Name;
-                entity.Age = user.Age;
-                entity.Email = user.Email;
-                //entity.Pwd = user.Password;
-            }
+        //    if (entity != null)
+        //    {
+        //        entity.UserName = user.Name;
+        //        entity.Age = user.Age;
+        //        entity.Email = user.Email;
+        //        //entity.Pwd = user.Password;
+        //    }
 
-            return _entities.SaveChanges()>0;
-        }
+        //    return _entities.SaveChanges()>0;
+        //}
 
         public bool DeleteUser(string userID)
         {

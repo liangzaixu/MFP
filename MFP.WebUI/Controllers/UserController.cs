@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using MFP.Model.BGSystem;
+using MFP.Model.Identity;
 using MFP.Service.BGSystem;
 
 

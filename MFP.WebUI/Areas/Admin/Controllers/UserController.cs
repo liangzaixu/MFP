@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using MFP.Service.BGSystem;
 using MFP.CommonModel;
-using MFP.Model.BGSystem;
+using MFP.Model.Identity;
 using MFP.MvcExtension;
 using MFP.WebUI.Properties;
 
@@ -127,7 +127,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
         public ActionResult Edit(UserViewModel model)
         {
             bool result;
-            bool doEditPassword=!(model.PasswordE == null && model.PasswordE2 == null);
+            bool doEditPassword = false;
 
             if (Request.IsAjaxRequest())
             {
@@ -152,7 +152,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
                 info.Msg = "您成功修改了管理员资料。";
                 info.Countdown = 5;
                 info.Destination = "刚才的编辑页面。";
-                info.RedirectUrl = Url.Action("Edit", "User", new { Area = "Admin",UserID= model.UserID });
+                info.RedirectUrl = Url.Action("Edit", "User", new { Area = "Admin",UserID= model.Id });
             }
             else
             {
@@ -160,7 +160,7 @@ namespace MFP.WebUI.Areas.Admin.Controllers
                 info.Msg = "修改管理员资料失败。";
                 info.Countdown = 5;
                 info.Destination = "刚才的编辑页面。";
-                info.RedirectUrl = Url.Action("Edit", "User", new { Area = "Admin", UserID = model.UserID });
+                info.RedirectUrl = Url.Action("Edit", "User", new { Area = "Admin", UserID = model.Id });
             }
 
             return View(Resources.Url_NormalInfoView, info);
