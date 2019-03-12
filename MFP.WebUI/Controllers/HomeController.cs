@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace MFP.WebUI.Controllers
 {
-    [SessionState(System.Web.SessionState.SessionStateBehavior.ReadOnly)]
+    //[SessionState(System.Web.SessionState.SessionStateBehavior.ReadOnly)]
     public class HomeController : BaseController
     {
         public HomeController()
@@ -26,11 +26,11 @@ namespace MFP.WebUI.Controllers
 
         }
 
+        [Authorize]
         // GET: Home
         public ActionResult Index()
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
-
             if (User.Identity.IsAuthenticated)
             {
                 ViewBag.UserId = OnlineUser.AccountId;
