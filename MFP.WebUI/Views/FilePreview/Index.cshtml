@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        div {
+            margin:5px;
+            font-size: 18px;
+        }
+
+        div  a{
+            color: darkcyan;
+            text-decoration: none;
+        }
+        div  a:hover{
+            color:lightpink;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <a href="@Url.Action("OfficeFile")">Office相关文件预览</a> 
+</div>
+<div>
+    @Html.ActionLink("纯文本性质文件预览", "TxtFile")
+   
+</div>
+<div>
+    @Html.ActionLink("视频预览", "VideoFile")
+
+</div>
+<div>
+    @Html.ActionLink("音频文件预览", "AudioFile")
+
+</div>
+<div>
+    @Html.ActionLink("PDF", "PDF")
+
+</div>
+</body>
+</html>

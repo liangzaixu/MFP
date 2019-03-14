@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OfficeFile</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <style>
+        div {
+            margin:20px;
+            font-size: 18px;
+        }
+        div  a{
+            color: darkcyan;
+            text-decoration: none;
+        }
+        div  a:hover{
+            color:lightpink;
+        }
+    </style>
+    <script>
+        $(function() {
+            $(".btn").click(function() {
+                $(this).siblings().toggle();
+            });
+
+            $(".btn-preview-word").click(function () {
+                $(this).siblings().toggle();
+            });
+
+            $(".btn-preview-excel").click(function () {
+                $(this).siblings().toggle();
+            });
+
+            $(".btn-preview-ppt").click(function () {
+                $(this).siblings().toggle();
+            });
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <div> @Html.ActionLink("back to index", "Index", "FilePreview") </div>
+    <div>
+        <button id="btn1" value="" class="btn">收展 方法一</button>
+        <h3>方法一：利用微软官方提供的在线接口实现预览 https://view.officeapps.live.com</h3>
+        <ul>
+            <li>优点：实现简单方便、效果有较好</li>
+            <li>缺点：网络依赖性较重，word、excel、ppt等文件资源必须是公共可访问的</li>
+        </ul>
+        <iframe height="800" src='https://view.officeapps.live.com/op/view.aspx?src=http://storage.xuetangx.com/public_assets/xuetangx/PDF/1.xls' width='100%' height='100%' frameborder='1'>
+        </iframe>
+    </div>
+    <div>
+        <button id="btn2" value="" class="btn">收展 方法二</button>
+        <h3>方法二：转PDF</h3>
+        <ul>
+            <li>优点：完全自主可控</li>
+            <li>缺点：需要额外的逻辑、空间记录、存储转换出来的PDF文件</li>
+        </ul>
+        <button id="btn-preview-word" value="" class="">查看word</button>
+        <button id="btn-preview-excel" value="" class="">查看excel</button>
+        <button id="btn-preview-ppt" value="" class="">查看ppt</button>
+        <iframe id="iframe-way2" height="800" src='' width='100%' height='100%' frameborder='1'></iframe>
+    </div>
+</body>
+</html>

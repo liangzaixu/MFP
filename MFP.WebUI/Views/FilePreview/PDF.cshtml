@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PDF</title>
+    <style>
+        div {
+            margin:5px;
+            font-size: 18px;
+        }
+        div  a{
+            color: darkcyan;
+            text-decoration: none;
+        }
+        div  a:hover{
+            color:lightpink;
+        }
+    </style>
+</head>
+<body>
+<div> @Html.ActionLink("back to index","Index","FilePreview") </div>
+<div style="width: 85%; height: 800px; margin: 0 auto 50px;">
+    <iframe width="85%" height="800" src="~/File/ShowDoc介绍.pdf"></iframe>
+</div>
+<div style="width: 85%; height: 800px; ; margin: 0 auto 50px;">
+    <iframe width="85%" height="800" src="~/File/SignalR2.0入门与提高.pdf"></iframe>
+</div>
+</body>
+</html>

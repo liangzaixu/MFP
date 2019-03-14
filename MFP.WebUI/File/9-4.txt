@@ -1,0 +1,28 @@
+http://www.9damao.com/thread-134752-1-5.html
+
+https://www.cnblogs.com/163yun/p/9565415.html js == 与！==
+
+身边一女性朋友很潇洒，生活品质极高5000的月薪上万的消费，时不时的还出国旅行，生活很是滋润，突然有一天吃饭的时候她和我说房子是租的但生活不是租的，决定改变，于是一口气和房东签了三年的租房合同，然后雷厉风行开始装修，三个月以后装修成了日式精品屋风格，装修好的那天请房东吃饭，房东一看惊呆了，没想到自己的破房子还能焕发出这样的生机。大夸朋友，然后给了朋友违约金，要求她搬走，然后把房子挂在精品区一个月租金涨了30%最近看到她，问她怎么了好像不开心的样子，她说取关咪蒙了，存钱买自己的房子~
+
+作者：MR.F
+链接：https://www.zhihu.com/question/40723999/answer/396577689
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+mrxu176@gmail.com
+qwerty123456!
+AWS账户：mrxu
+Name:qwerty
+
+{
+"server": "0.0.0.0",
+"server_port": 443,
+"local_address": "127.0.0.1",
+"local_port": 1080,
+"password": "qwerty",
+"timeout": 300,
+"method": "rc4-md5",
+"fast_open": false,
+"workers": 1
+}
+Sublime Text

@@ -177,6 +177,7 @@
     <Compile Include="Areas\UserMgr\UserMgrAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsyncController.cs" />
+    <Compile Include="Controllers\FilePreviewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HttpRequestController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
@@ -298,6 +299,7 @@
     <Content Include="Content\layui\lay\modules\upload.js" />
     <Content Include="Content\layui\lay\modules\util.js" />
     <Content Include="favicon.ico" />
+    <Content Include="File\9-4.txt" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\Admin\User\index.js" />
@@ -319,6 +321,9 @@
     <Content Include="Areas\Admin\Views\User\Add.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="File\ShowDoc介绍.pdf" />
+    <Content Include="File\SignalR2.0入门与提高.pdf" />
+    <Content Include="File\中高考英语自适应学习训练平台-正式版 用户角色身份说明.docx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -359,6 +364,12 @@
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\Lockout.cshtml" />
+    <Content Include="Views\FilePreview\Index.cshtml" />
+    <Content Include="Views\FilePreview\OfficeFile.cshtml" />
+    <Content Include="Views\FilePreview\TxtFile.cshtml" />
+    <Content Include="Views\FilePreview\VideoFile.cshtml" />
+    <Content Include="Views\FilePreview\AudioFile.cshtml" />
+    <Content Include="Views\FilePreview\PDF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
