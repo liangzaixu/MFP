@@ -113,7 +113,7 @@ namespace MFP.WebUI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task< ActionResult> SignUp(RegisterViewModel model, string returnUrl)
+        public async Task<ActionResult> SignUp(RegisterViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
