@@ -12,13 +12,30 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script>
         $(function() {
-            $.ajax({
-                url: "./TestAjaxSleep",
-                type: "GET",
-                success: function(data) {
-                    alert(data);
+            function Persion(id,name) {
+                this.name = name;
+                var id = id;
+                Persion.prototype.walk = function () {
+                    alert(this.name);
+                    return this;
                 }
-            });
+
+                this.run=function() {
+                    alert("run");
+                    return this;
+                }
+            }
+
+            var persion1 = new Persion("1", "大名");
+
+            persion1.walk().run();
+            console.info(persion1.id);
+            console.info(persion1.name);
+
+            var persion2 = new Persion("2", "大2");
+            persion2.walk().run().walk();
+
+
         });
     </script>
 </head>

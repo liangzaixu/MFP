@@ -43,8 +43,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.Identity.O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.Identity.EntityFramework", "Microsoft.AspNet.Identity.EntityFramework\Microsoft.AspNet.Identity.EntityFramework.csproj", "{D7298DAD-AB04-4502-9567-0461D0AD059E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeFileConverter", "OfficeFileConverter\OfficeFileConverter.csproj", "{CB1540A6-47BE-420F-8195-73DC0AC838DE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Utility", "MFP.Utility\MFP.Utility.csproj", "{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}"
 EndProject
 Global
@@ -183,14 +181,6 @@ Global
 		{D7298DAD-AB04-4502-9567-0461D0AD059E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7298DAD-AB04-4502-9567-0461D0AD059E}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
 		{D7298DAD-AB04-4502-9567-0461D0AD059E}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.DebugNet40|Any CPU.Build.0 = Debug|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
-		{CB1540A6-47BE-420F-8195-73DC0AC838DE}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
 		{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU

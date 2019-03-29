@@ -26,7 +26,6 @@ namespace MFP.WebUI.Controllers
 
         }
 
-        [Authorize]
         // GET: Home
         public ActionResult Index()
         {
@@ -45,6 +44,11 @@ namespace MFP.WebUI.Controllers
         {
             Thread.Sleep(5000);
             return Json(DateTime.Now.ToString("mm:ss"),JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Chat()
+        {
+            return View();
         }
     }
 }
