@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>vue learning</title>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src="Content/vue.js"></script>
+    <meta charset="utf-8" />
+    <script>
+        window.onload = function() {
+            var h1 = new Vue({
+                el: '#app-3',
+                data: {
+                    seen: false,
+                    message:'蓝鸽规范'
+                }
+            });
+
+            h1.seen = true;
+
+            var app4 = new Vue({
+                el: "#app-4",
+                data: {
+                    todos: [
+                        { text: '学习vue+element' },
+                        { text: '学.net core' },
+                        { text: 'redis' },
+                    ],
+                }
+            });
+
+            document.getElementById("btn-1").onclick = function () {
+                
+                //h1.seen = !h1.seen;
+                h1.message = "蓝鸽上班996.icu黑名单";
+                app4.todos.push({ text: '跑路' });
+            };
+
+            var app5 = new Vue({
+                el: "#app-5",
+                data: {
+                    message: "what the fuck",
+                    reverseMessage: function () {
+                        console.info(this);
+                        app5.message = app5.message.split(' ').reverse().join(' ');
+                    }
+                }
+            });
+
+            var app6 = new Vue({
+                el: "#app-6",
+                data: {
+                    message: '初始化数据',
+                }
+            });
+
+            Vue.component('todo-item',{
+                    props: ['todo'],
+                    template: '<li>{{ todo.text }}</li>'
+            });
+
+            Vue.component('class-item',
+                {
+                    props: ['schclass'],
+                    template: '<div><span>{{schclass.name}}</span></div>'
+                });
+
+            var app7 = new Vue({
+                el: '#app-7',
+                data: {
+                    groceryList: [
+                        { id: 0, text: '蔬菜' },
+                        { id: 1, text: '奶酪' },
+                        { id: 2, text: '随便其它什么人吃的东西' }
+                    ]
+                }
+            });
+
+            var app8 = new Vue({
+                el: "#app-8",
+
+                data: {
+                    classList: [{ id: 0, name: "三年1班" }, { id: 0, name: "三年2班" }, { id: 0, name: "三年3班" }]
+                }
+            });
+
+
+        };
+
+    </script>
+</head>
+<body>
+<div id="app-3">
+    <p v-if="seen">{{message}}</p>
+</div>
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">{{todo.text}}</li>
+    </ol>
+
+</div>
+<div id="app-5">
+    <span>
+        {{message}}
+    </span>
+    <input type="button" value="点我" v-on:click="reverseMessage"/>
+</div>
+<div>
+    
+    <div id="app-6">
+        <span>{{message}}</span>
+        <input type="text" value="" v-model="message" />
+    </div>
+</div>
+<input id="btn-1" type="button" value="button" />
+
+<div id="app-7">
+    <ol>
+        <!--
+        现在我们为每个 todo-item 提供 todo 对象
+        todo 对象是变量，即其内容可以是动态的。
+        我们也需要为每个组件提供一个“key”，稍后再
+        作详细解释。
+        -->
+        <todo-item
+            v-for="item in groceryList"
+            v-bind:todo="item"
+            v-bind:key="item.id"
+        ></todo-item>
+    </ol>
+</div>
+
+<div id="app-8">
+    <class-item 
+        v-for="item in classList"
+        v-bind:schclass="item"
+        v-bind:key="item.id"
+    ></class-item>
+</div>
+</body>
+</html>
