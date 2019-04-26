@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{0CF0BB87-3890-4A93-98EC-CB7FCC9DBD3F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Repository", "03.Repository", "{0CF0BB87-3890-4A93-98EC-CB7FCC9DBD3F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{405BC70A-603A-4713-98DC-FB74FD7C4192}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Service", "04.Service", "{405BC70A-603A-4713-98DC-FB74FD7C4192}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{7A503B1F-5613-4DCA-858F-B560A30D74DB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Model", "02.Model", "{7A503B1F-5613-4DCA-858F-B560A30D74DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Repository.BGSystem", "MFP.Repository.BGSystem\MFP.Repository.BGSystem.csproj", "{A56415B8-9C31-48EE-9BD5-FE73D6D42319}"
 EndProject
@@ -21,13 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Service.BGSystem", "MFP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Maper", "MFP.Maper\MFP.Maper.csproj", "{9758DEF4-F462-43BC-8E0E-2403E0AC05D6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CD8ECF06-E240-4668-8E0F-4CF88E7B7ED9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Infrastructure", "01.Infrastructure", "{CD8ECF06-E240-4668-8E0F-4CF88E7B7ED9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.CommonModel", "MFP.CommonModel\MFP.CommonModel.csproj", "{F3D330D1-696B-495A-A308-CE5BCA1E022E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.MvcExtension", "MFP.MvcExtension\MFP.MvcExtension.csproj", "{EE8C5DB1-9A10-48AD-A9B4-FC9C452CD8AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{7E195D78-C4E5-4DF9-B7E2-8FB185194745}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{ED0EBDF0-1E86-4AF0-A864-5D707B5636DA}"
 EndProject
@@ -44,6 +42,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.Identity.EntityFramework", "Microsoft.AspNet.Identity.EntityFramework\Microsoft.AspNet.Identity.EntityFramework.csproj", "{D7298DAD-AB04-4502-9567-0461D0AD059E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.Utility", "MFP.Utility\MFP.Utility.csproj", "{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.Chat", "05.Chat", "{7C2E902E-BBF7-4720-A4FA-56251FE94797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFP.ChatServer", "MFP.ChatServer\MFP.ChatServer.csproj", "{87B892C2-E024-4B4B-9E58-1C0410A99A07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,14 +119,6 @@ Global
 		{EE8C5DB1-9A10-48AD-A9B4-FC9C452CD8AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE8C5DB1-9A10-48AD-A9B4-FC9C452CD8AF}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
 		{EE8C5DB1-9A10-48AD-A9B4-FC9C452CD8AF}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.DebugNet40|Any CPU.Build.0 = Debug|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
-		{7E195D78-C4E5-4DF9-B7E2-8FB185194745}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
 		{ED0EBDF0-1E86-4AF0-A864-5D707B5636DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED0EBDF0-1E86-4AF0-A864-5D707B5636DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED0EBDF0-1E86-4AF0-A864-5D707B5636DA}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
@@ -189,6 +183,14 @@ Global
 		{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
 		{C26E5F0B-75A1-4FBD-A436-34E72C81DF62}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.DebugNet40|Any CPU.Build.0 = Debug|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -208,5 +210,9 @@ Global
 		{943170EB-F4E7-4A6D-989E-2CF6C681DD89} = {CD8ECF06-E240-4668-8E0F-4CF88E7B7ED9}
 		{D7298DAD-AB04-4502-9567-0461D0AD059E} = {CD8ECF06-E240-4668-8E0F-4CF88E7B7ED9}
 		{C26E5F0B-75A1-4FBD-A436-34E72C81DF62} = {CD8ECF06-E240-4668-8E0F-4CF88E7B7ED9}
+		{87B892C2-E024-4B4B-9E58-1C0410A99A07} = {7C2E902E-BBF7-4720-A4FA-56251FE94797}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B1209C3-F33E-4269-BBD8-8F6FA7FAA981}
 	EndGlobalSection
 EndGlobal
