@@ -18,13 +18,18 @@ namespace MFP.Repository.Entities
     {
         public DbContextBase(): base("name=connectionStr")
         {
-            //Database.SetInitializer<MvcDemoEntities>(new DropCreateDatabaseAlways<MvcDemoEntities>());
-            //Database.SetInitializer<MvcDemoEntities>(new CreateDatabaseIfNotExists<MvcDemoEntities>());
-            //Database.SetInitializer<MvcDemoEntities>(new CreateDatabaseIfNotExists<MvcDemoEntities>());
-            //Database.SetInitializer<MvcDemoEntities>(null);
+            //Database.SetInitializer<DbContextBase>(new DropCreateDatabaseAlways<DbContextBase>());
+            //Database.SetInitializer<DbContextBase>(new CreateDatabaseIfNotExists<DbContextBase>());
+            //Database.SetInitializer<DbContextBase>(new CreateDatabaseIfNotExists<DbContextBase>());
+            //Database.SetInitializer<DbContextBase>(null);
             Database.SetInitializer(new SeedingDataInitializer());
 
         }
+
+        public virtual DbSet<Chat_FriendGroup> Chat_FriendGroup { get; set; }
+        public virtual DbSet<Chat_FriendGroupUser> Chat_FriendGroupUser { get; set; }
+        public virtual DbSet<Chat_Group> Chat_Group { get; set; }
+        public virtual DbSet<Chat_GroupUser> Chat_GroupUser { get; set; }
 
         public virtual DbSet<Log> Logs { get; set; }
 
@@ -45,6 +50,7 @@ namespace MFP.Repository.Entities
         public virtual DbSet<SideMenu> SideMenus { get; set; }
 
         public virtual DbSet<DetailAction> DetailAction { get; set; }
+
 
         //public virtual DbSet<RoleHeaderMenu> RoleHeaderMenu { get; set; }
 

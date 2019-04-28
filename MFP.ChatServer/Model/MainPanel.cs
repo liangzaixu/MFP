@@ -6,8 +6,8 @@ namespace MFP.ChatServer.Model
 {
     public class MainPanel
     {
-        public Mine mine;
-        public List<FriendGroup> friend;
-        public List<Group> group;
+        public Mine mine { get; set; }
+        public List<FriendGroup> friend { get; set; }
+        public List<Group> group { get; set; }
     }
 }

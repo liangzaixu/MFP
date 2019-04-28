@@ -53,6 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="Entity\Chat_FriendGroup.cs" />
+    <Compile Include="Entity\Chat_FriendGroupUser.cs" />
+    <Compile Include="Entity\Chat_Group.cs" />
+    <Compile Include="Entity\Chat_GroupUser.cs" />
     <Compile Include="Entity\DetailAction.cs" />
     <Compile Include="Entity\City.cs" />
     <Compile Include="DbContextFactory.cs" />

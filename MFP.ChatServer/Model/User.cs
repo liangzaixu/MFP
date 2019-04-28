@@ -9,7 +9,7 @@ namespace MFP.ChatServer.Model
         /// <summary>
         /// 好友昵称
         /// </summary>
-        public string user { get; set; }
+        public string username { get; set; }
 
         /// <summary>
         /// 好友ID
@@ -30,5 +30,7 @@ namespace MFP.ChatServer.Model
         /// 在线状态，若值为offline代表离线，online或者不填为在线
         /// </summary>
         public string status { get; set; }
+
+        public string groupid { get; set; }
     }
 }

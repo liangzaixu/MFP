@@ -6,8 +6,14 @@ namespace MFP.ChatServer.Model
 {
     public class FriendGroup
     {
-        public string groupname;
-        public string id;
-        public List<User> list;
+
+        public FriendGroup()
+        {
+            list = new List<User>();
+        }
+        public string groupname { get; set; }
+        public string id { get; set; }
+        public List<User> list { get; set; }
+        public string ownerid { get; set; }
     }
 }
