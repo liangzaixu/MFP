@@ -28,26 +28,29 @@ namespace MFP.ChatServer
             this._chatRep = chatRep;
         }
 
-        public InitResult GetInitData(string userId)
+        public InitResultViewModel GetInitData(string userId)
         {
+            List<FriendGroupViewModel> friendGroups_vm = _friendGroupRep.Entities.Where(m => m.OwnerId == userId).OrderBy(m => m.OrderNo).ToList().ToViewModel();
+            List<UserViewModel> friends_vm = _chatRep.GetFriends(userId);
+            List<GroupViewModel> group_vm = _groupRep.Entities.Where(m => m.OwnerId == userId).OrderBy(m => m.OrderNo).ToList().ToViewModel();
 
-            List<FriendGroup> friendGroups_vm = new List<FriendGroup>();
-            List<Chat_FriendGroup> friendGroups_e = _friendGroupRep.Entities.Where(m => m.OwnerId == userId).OrderBy(m => m.OrderNo).ToList();
-            List<Model.User> friends_vm = _chatRep.GetFriends(userId);
-
-            foreach(var groupItem in friendGroups_vm)
+            foreach (var groupItem in friendGroups_vm)
             {
-                foreach(var userItem in friends)
+                foreach(var userItem in friends_vm)
                 {
-                    if(userItem.groupid==groupItem.Id)
+                    if(userItem.groupid==groupItem.id)
                     {
-                        groupItem.list.Add(userItem.to)
+                        groupItem.list.Add(userItem);
                     }
                 }
             }
 
-
-            return null;
+            return new InitResultViewModel()
+            {
+                code = 0,
+                msg = "success",
+                data = new MainPanelViewModel() { friend = friendGroups_vm,group= group_vm }
+            };
         }
     }
 }

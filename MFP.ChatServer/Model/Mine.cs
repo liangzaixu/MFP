@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MFP.ChatServer.Model
 {
-    public class Mine
+    public class MineViewModel
     {
         /// <summary>
         /// 我的昵称

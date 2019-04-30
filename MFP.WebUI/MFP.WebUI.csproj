@@ -188,6 +188,7 @@
     <Compile Include="Areas\UserMgr\UserMgrAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsyncController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HttpRequestController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
@@ -526,6 +527,7 @@
     <Folder Include="Content\Admin\img\" />
     <Folder Include="fonts\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -533,6 +535,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MFP.ChatServer\MFP.ChatServer.csproj">
+      <Project>{d10e85c3-7307-4094-a5a3-705b4df6e2f8}</Project>
+      <Name>MFP.ChatServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MFP.CommonModel\MFP.CommonModel.csproj">
       <Project>{f3d330d1-696b-495a-a308-ce5bca1e022e}</Project>
       <Name>MFP.CommonModel</Name>

@@ -4,10 +4,10 @@ using System.Text;
 
 namespace MFP.ChatServer.Model
 {
-    public class MainPanel
+    public class MainPanelViewModel
     {
-        public Mine mine { get; set; }
-        public List<FriendGroup> friend { get; set; }
-        public List<Group> group { get; set; }
+        public MineViewModel mine { get; set; }
+        public List<FriendGroupViewModel> friend { get; set; }
+        public List<GroupViewModel> group { get; set; }
     }
 }

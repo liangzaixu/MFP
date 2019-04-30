@@ -13,5 +13,6 @@ namespace MFP.Repository.Entities.Entity
     [Table("Role")]
     public class Role : IdentityRole<string, UserRole>
     {
+
     }
 }

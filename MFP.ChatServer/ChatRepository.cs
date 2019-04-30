@@ -17,28 +17,25 @@ namespace MFP.ChatServer
             DbContext = DbContextFactory.GetDbContext();
         }
 
-        public List<MFP.ChatServer.Model.User> GetFriends(string userId)
+        public List<UserViewModel> GetFriends(string userId)
         {
             var users = (from fgu in DbContext.Chat_FriendGroupUser
                          join u in DbContext.Users
-                        on fgu.UserId equals u.Id
+                        on fgu.UserId equals u.AccountId
                          join fg in DbContext.Chat_FriendGroup
                          on fgu.FriendGroupId equals fg.Id
                          orderby fg.OrderNo, u.UserName
-                         where u.Id == userId
-                         select new MFP.ChatServer.Model.User()
+                         where u.AccountId == userId
+                         select new UserViewModel()
                          {
                              id = u.AccountId,
                              username = u.UserName,
-                             groupid = fg.Id.ToString()
+                             groupid = fg.Id.ToString(),
+                             avatar=u.Photo,
+                             sign=u.Sign
 
                          }).ToList();
             return users;
         }
-
-
-
-
-
     }
 }

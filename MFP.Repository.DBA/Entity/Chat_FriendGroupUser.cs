@@ -15,7 +15,6 @@ namespace MFP.Repository.Entities.Entity
         public int Id { get; set; }
 
         [Column(TypeName = "int")]
-        [StringLength(50)]
         public int FriendGroupId { get; set; }
 
         [Column(TypeName = "varchar")]

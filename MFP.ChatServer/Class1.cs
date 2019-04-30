@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MFP.Maper
+namespace MFP.ChatServer
 {
-    public static  class ChatMaper
+    public class Class1
     {
-        public static Cha 
-
     }
 }

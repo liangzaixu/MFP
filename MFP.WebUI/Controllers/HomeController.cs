@@ -10,6 +10,7 @@ using MFP.MvcExtension;
 using MFP.Service.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using MFP.ChatServer;
 
 namespace MFP.WebUI.Controllers
 {
@@ -18,7 +19,7 @@ namespace MFP.WebUI.Controllers
     {
         public HomeController()
         {
-
+             
         }
 
         public HomeController(UserService userSer):base()

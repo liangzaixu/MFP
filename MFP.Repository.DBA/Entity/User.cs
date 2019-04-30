@@ -42,5 +42,13 @@ namespace MFP.Repository.Entities.Entity
         [Required]
         public int Age { get; set; }
 
+        [Column(TypeName = "varchar")]
+        [StringLength(256)]
+        public string Photo { get; set; }
+
+        [Column(TypeName = "nvarchar")]
+        [StringLength(32)]
+        public string Sign { get; set; }
+
     }
 }
